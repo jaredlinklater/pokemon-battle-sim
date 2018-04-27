@@ -3,7 +3,6 @@
 #include "arena.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
-#include "objectList.cpp"
 using namespace std;
 
 /*** Declare global objects ***/
