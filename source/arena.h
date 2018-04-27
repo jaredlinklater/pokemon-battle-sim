@@ -7,19 +7,20 @@ using namespace std;
 
 class arena {
 public:
-	pokemon pokA;
-	pokemon pokB;
-	bool pokAset;
-	bool pokBset;
+	pokemon pokeA;
+	pokemon pokeB;
+	bool pokeAset;
+	bool pokeBset;
+	int turnCount;
 	int victor;
 
 	//Setters
-	void setTeamA(pokemon tA);
-	void setTeamB(pokemon tB);
+	void setPokeA(pokemon tA);
+	void setPokeB(pokemon tB);
 
 	void init();
 	void battle();
-	void doTurn(pokemon attacker, pokemon defender);
+	void doTurn();
 };
 
 #endif

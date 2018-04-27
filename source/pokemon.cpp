@@ -2,6 +2,17 @@
 #include <vector>
 using namespace std;
 
+//Constructors
+pokemon::pokemon() {
+	name = "missingno";
+}
+
+pokemon::pokemon(string s, int i, vector<pokemonMove> moves) {
+	name = s;
+	hp = i;
+	moveset = moves;
+}
+
 //Setters
 void pokemon::setId(int i) {
 	id = i;

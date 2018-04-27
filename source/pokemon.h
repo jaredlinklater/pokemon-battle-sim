@@ -19,6 +19,10 @@ public:
 	int speed;
 	vector<pokemonMove> moveset;
 
+	//Constructors
+	pokemon();
+	pokemon(string s, int i, vector<pokemonMove> moves);
+
 	//Setters
 	void setId(int i);
 	void setName(string s);

@@ -2,6 +2,12 @@
 #include <vector>
 using namespace std;
 
+//Constructor
+pokemonMove::pokemonMove(string s, int i) {
+	name = s;
+	damage = i;
+}
+
 //Setters
 void pokemonMove::setName(string s) {
 	name = s;

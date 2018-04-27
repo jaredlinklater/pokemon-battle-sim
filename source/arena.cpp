@@ -6,28 +6,29 @@ using namespace std;
 
 //Initialises variables upon new instance
 void arena::init() {
-	pokAset = 0;
-	pokBset = 0;
+	pokeAset = 0;
+	pokeBset = 0;
+	turnCount = 0;
 }
 
 //Sets Team A
-void arena::setTeamA(pokemon tA) {
-	pokA = tA;
-	pokAset = 1;
+void arena::setPokeA(pokemon tA) {
+	pokeA = tA;
+	pokeAset = 1;
 }
 
 //Sets Team B
-void arena::setTeamB(pokemon tB) {
-	pokA = tB;
-	pokBset = 1;
+void arena::setPokeB(pokemon tB) {
+	pokeB = tB;
+	pokeBset = 1;
 }
 
 //Conducts battle between two pokemon
 void arena::battle() {
-	if(!pokAset) { //Checks if both teams have been set
+	if(!pokeAset) { //Checks if both teams have been set
 		cout << "Team A is not ready for battle!" << endl;
 		return;
-	} else if(!pokBset) {
+	} else if(!pokeBset) {
 		cout << "Team B is not ready for battle!" << endl;
 		return;
 	}
@@ -40,5 +41,15 @@ void arena::battle() {
 }
 
 void arena::doTurn() {
-	cout << "pok A turn" << endl;
+	pokemon attacker;
+	pokemon defender;
+	if(turnCount % 2 == 0) { //pokA attacks on even turns
+		attacker = pokeA;
+		defender = pokeB;
+	} else { //pokB attacks on odd turns
+		attacker = pokeB;
+		defender = pokeA;
+	}
+	cout << attacker.getName() << "'s turn" << endl;
+	turnCount++;
 }

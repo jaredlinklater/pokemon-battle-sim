@@ -3,8 +3,14 @@
 #include "arena.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
-#include "pokemonList.cpp"
+#include "objectList.cpp"
 using namespace std;
+
+/*** Declare global objects ***/
+//Declaring Pokemon
+pokemon bulbasaur;
+pokemon charmander;
+pokemon squirtle;
 
 //Main function, containing game state loop
 int main() {
@@ -16,11 +22,8 @@ int main() {
 	arena ArenaA;
 	ArenaA.init();
 
-	pokemon pokA;
-	pokemon pokB;
-
-	ArenaA.setTeamA(pokA);
-	ArenaA.setTeamB(pokB);
+	ArenaA.setPokeA(bulbasaur);
+	ArenaA.setPokeB(charmander);
 	ArenaA.battle();
 
 	int temp;

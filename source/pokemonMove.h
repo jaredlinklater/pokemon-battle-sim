@@ -17,6 +17,9 @@ public:
 	double statProb;
 	double statMultiplier;*/
 
+	//Constructor
+	pokemonMove(string s, int i);
+
 	//Setters
 	void setName(string s);
 	void setType(string s);
