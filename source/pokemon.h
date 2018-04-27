@@ -8,6 +8,7 @@ using namespace std;
 
 class pokemon {
 public:
+	int id;
 	string name;
 	vector<string> types;
 	int hp;
@@ -17,6 +18,9 @@ public:
 	int specDefense;
 	int speed;
 	vector<pokemonMove> moveset;
+
+	void setId(int i);
+	void setName(string n);
 };
 
 #endif

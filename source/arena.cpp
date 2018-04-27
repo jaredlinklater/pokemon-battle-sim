@@ -1,36 +1,36 @@
 #include "arena.h"
+#include "pokemon.h"
 #include <iostream>
 #include <vector>
 using namespace std;
 
-vector<int> empty (1,0);
-vector<int> arena::teamEmpty = empty;
-
 //Initialises variables upon new instance
 void arena::init() {
+	pokemon uninit;
+	uninit.setId(-1);
+	teamEmpty = uninit;
 	teamA = teamB = teamEmpty;
 }
 
 //Sets Team A
-void arena::setTeamA(vector<int> tA) {
+void arena::setTeamA(pokemon tA) {
 	teamA = tA;
 }
 
 //Sets Team B
-void arena::setTeamB(vector<int> tB) {
+void arena::setTeamB(pokemon tB) {
 	teamB = tB;
 }
 
 void arena::battle() {
-	if(teamA == teamEmpty) { //Checks if both teams have been set
+	if(teamA.id == teamEmpty.id) { //Checks if both teams have been set
 		cout << "Team A is not ready for battle!" << endl;
 		return;
-	} else if(teamB == teamEmpty) {
+	} else if(teamB.id == teamEmpty.id) {
 		cout << "Team B is not ready for battle!" << endl;
 		return;
 	}
 	cout << "Both teams are ready for battle!" << endl;
-
 
 	while(true) {
 		if(1) {

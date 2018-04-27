@@ -1,6 +1,8 @@
 #include <iostream>
 #include "game.h"
 #include "arena.h"
+#include "pokemon.h"
+#include "pokemonMove.h"
 using namespace std;
 
 //Main function, containing game state loop
@@ -13,13 +15,13 @@ int main() {
 	arena ArenaA;
 	ArenaA.init();
 
-	int arrA[] = {8,5,3,1};
-	vector<int> teamA (arrA, arrA + sizeof(arrA)/sizeof(int));
-	int arrB[] = {7,2,4,9};
-	vector<int> teamB (arrB, arrB + sizeof(arrB)/sizeof(int));
+	pokemon pokA;
+	pokA.setName("1");
+	pokemon pokB;
+	pokB.setName("2");
 
-	ArenaA.setTeamA(teamA);
-	ArenaA.setTeamB(teamB);
+	ArenaA.setTeamA(pokA);
+	ArenaA.setTeamB(pokB);
 	ArenaA.battle();
 
 	int temp;

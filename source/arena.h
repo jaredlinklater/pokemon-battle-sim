@@ -2,18 +2,20 @@
 #define ARENA_H
 
 #include <vector>
+#include "pokemon.h"
 using namespace std;
 
 class arena {
 public:
-	vector<int> teamA;
-	vector<int> teamB;
-	static vector<int> teamEmpty;
+	pokemon teamA;
+	pokemon teamB;
+	pokemon teamEmpty;
 	int victor;
 
+	void setTeamA(pokemon tA);
+	void setTeamB(pokemon tB);
+
 	void init();
-	void setTeamA(vector<int> tA);
-	void setTeamB(vector<int> tB);
 	void battle();
 };
 
