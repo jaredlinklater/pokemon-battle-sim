@@ -1,4 +1,4 @@
-main: main.o game.o
+main: main.o game.o arena.o pokemon.o pokemonMove.o
 	g++ -std=c++11 -o $@ $^
 
 clean:
