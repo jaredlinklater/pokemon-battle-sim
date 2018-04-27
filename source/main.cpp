@@ -16,10 +16,8 @@ int main() {
 	ArenaA.init();
 
 	pokemon pokA;
-	pokA.setName("1");
 	pokemon pokB;
-	pokB.setName("2");
-
+	
 	ArenaA.setTeamA(pokA);
 	ArenaA.setTeamB(pokB);
 	ArenaA.battle();

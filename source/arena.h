@@ -7,9 +7,10 @@ using namespace std;
 
 class arena {
 public:
-	pokemon teamA;
-	pokemon teamB;
-	pokemon teamEmpty;
+	pokemon pokA;
+	pokemon pokB;
+	bool pokAset;
+	bool pokBset;
 	int victor;
 
 	void setTeamA(pokemon tA);

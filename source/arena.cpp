@@ -6,27 +6,28 @@ using namespace std;
 
 //Initialises variables upon new instance
 void arena::init() {
-	pokemon uninit;
-	uninit.setId(-1);
-	teamEmpty = uninit;
-	teamA = teamB = teamEmpty;
+	pokAset = 0;
+	pokBset = 0;
 }
 
 //Sets Team A
 void arena::setTeamA(pokemon tA) {
-	teamA = tA;
+	pokA = tA;
+	pokAset = 1;
 }
 
 //Sets Team B
 void arena::setTeamB(pokemon tB) {
-	teamB = tB;
+	pokA = tB;
+	pokBset = 1;
 }
 
+//Conducts battle between two pokemon
 void arena::battle() {
-	if(teamA.id == teamEmpty.id) { //Checks if both teams have been set
+	if(!pokAset) { //Checks if both teams have been set
 		cout << "Team A is not ready for battle!" << endl;
 		return;
-	} else if(teamB.id == teamEmpty.id) {
+	} else if(!pokBset) {
 		cout << "Team B is not ready for battle!" << endl;
 		return;
 	}
