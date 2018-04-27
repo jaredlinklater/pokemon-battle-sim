@@ -16,6 +16,20 @@ public:
 	/*string statFocus;
 	double statProb;
 	double statMultiplier;*/
+
+	//Setters
+	void setName(string s);
+	void setType(string s);
+	void setIsSpecAtk(bool b);
+	void setDamage(int i);
+	void setAccuracy(double d);
+
+	//Getters
+	string getName();
+	string getType();
+	bool getIsSpecAtk();
+	int getDamage();
+	double getAccuracy();
 };
 
 #endif

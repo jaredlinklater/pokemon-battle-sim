@@ -33,9 +33,12 @@ void arena::battle() {
 	}
 	cout << "Both teams are ready for battle!" << endl;
 
-	while(true) {
-		if(1) {
-			break;
-		}
+	int i = 0;
+	while(i++ < 5) {
+		doTurn();
 	}
+}
+
+void arena::doTurn() {
+	cout << "pok A turn" << endl;
 }

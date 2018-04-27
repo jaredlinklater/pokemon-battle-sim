@@ -3,6 +3,7 @@
 #include "arena.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
+#include "pokemonList.cpp"
 using namespace std;
 
 //Main function, containing game state loop
@@ -17,7 +18,7 @@ int main() {
 
 	pokemon pokA;
 	pokemon pokB;
-	
+
 	ArenaA.setTeamA(pokA);
 	ArenaA.setTeamB(pokB);
 	ArenaA.battle();

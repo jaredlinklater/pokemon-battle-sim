@@ -19,8 +19,29 @@ public:
 	int speed;
 	vector<pokemonMove> moveset;
 
+	//Setters
 	void setId(int i);
-	void setName(string n);
+	void setName(string s);
+	void setTypes(vector<string> v);
+	void setHp(int i);
+	void setAttack(int i);
+	void setSpecAttack(int i);
+	void setDefense(int i);
+	void setSpecDefense(int i);
+	void setSpeed(int i);
+	void setMoveset(vector<pokemonMove> v);
+
+	//Getters
+	int getId();
+	string getName();
+	vector<string> getTypes();
+	int getHp();
+	int getAttack();
+	int getSpecAttack();
+	int getDefense();
+	int getSpecDefense();
+	int getSpeed();
+	vector<pokemonMove> getMoveset();
 };
 
 #endif

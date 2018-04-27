@@ -13,11 +13,13 @@ public:
 	bool pokBset;
 	int victor;
 
+	//Setters
 	void setTeamA(pokemon tA);
 	void setTeamB(pokemon tB);
 
 	void init();
 	void battle();
+	void doTurn(pokemon attacker, pokemon defender);
 };
 
 #endif
