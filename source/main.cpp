@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include "game.h"
+#include "player.h"
+#include "ai.h"
 #include "arena.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
@@ -35,6 +37,11 @@ int main() {
 
 	//Start battle
 	ArenaA.startBattle();
+
+
+	/*player playerA;
+	trainer trainerA = playerA;
+	cout << "input: " << playerA.chooseMove() << "." << endl;*/
 
 	int temp;
 	while(!GameA.gameOver) {
