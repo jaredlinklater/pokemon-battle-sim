@@ -10,7 +10,33 @@ pokemon::pokemon() {
 pokemon::pokemon(string s, int i, vector<pokemonMove> moves) {
 	name = s;
 	hp = i;
+	currentHp = hp;
 	moveset = moves;
+	infliction = "clear";
+}
+
+//Heals to full hp
+void pokemon::heal() {
+	currentHp = hp;
+}
+
+//Heals for i HP up to max HP
+void pokemon::heal(int i) {
+	currentHp += i;
+	if(currentHp > hp)
+		currentHp = hp;
+}
+
+//Damage for i HP
+void pokemon::damage(int i) {
+	currentHp -= i;
+	if(currentHp < 0)
+		currentHp = 0;
+}
+
+//Sets current HP to 0
+void pokemon::kill() {
+	currentHp = 0;
 }
 
 //Setters
@@ -89,6 +115,10 @@ int pokemon::getSpecDefense() {
 
 int pokemon::getSpeed() {
 	return speed;
+}
+
+int pokemon::getCurrentHp() {
+	return currentHp;
 }
 
 vector<pokemonMove> pokemon::getMoveset() {

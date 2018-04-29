@@ -21,7 +21,7 @@ int main() {
 
 	//Introduction, set up arena
 	cout << "Welcome to the Pokemon Battle Simulator!" << endl;
-	cout << "Lets get the arena ready for you." << endl;
+	cout << "Let's get the arena ready for you." << endl;
 	arena ArenaA;
 	ArenaA.init();
 

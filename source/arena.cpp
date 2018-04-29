@@ -23,6 +23,7 @@ void arena::startBattle() {
 	cout << "Both teams are ready for battle!" << endl;
 
 	battle battleA;
+	battleA.init();
 	battleA.setPokeA(teamA[0]);
 	battleA.setPokeB(teamB[0]);
 	battleA.start();

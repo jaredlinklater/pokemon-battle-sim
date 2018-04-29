@@ -40,7 +40,7 @@ void game::init() {
 	charmanderMoves.push_back(growl);
 	charmanderMoves.push_back(blank);
 	charmanderMoves.push_back(blank);
-	charmander = pokemon("Charmander", 80, charmanderMoves);
+	charmander = pokemon("Charmander", 100, charmanderMoves); //hp = 80 change back
 
 	//Squirtle
 	vector<pokemonMove> squirtleMoves;

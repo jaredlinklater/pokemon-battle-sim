@@ -6,55 +6,64 @@ using namespace std;
 
 //Initialises variables upon new instance
 void battle::init() {
-	//
 	pokeAset = 0;
 	pokeBset = 0;
 	turnCount = 0;
 }
 
-//
+//Loop turns until a pokemon is knocked out
 void battle::start() {
-	/*int i = 0;
-	while(teamA.getHp() != 0 || teamB.getHp() != 0) {
-		doTurn();
-	}*/
+	for(int i = 0; i < 5; i++) {
+		trainer turnPlayer;
+		if(turnCount % 2 == 0) { //trainerA attacks on even turns
+			turnPlayer = trainerA;
+		} else { //trainerB attacks on odd turns
+			turnPlayer = trainerB;
+		}
+		doTurn(turnPlayer);
+	}
 }
 
 //
-void battle::doTurn() {
+void battle::doTurn(trainer t) {
 	pokemon attacker;
 	pokemon defender;
-	if(turnCount % 2 == 0) { //pokA attacks on even turns
-		attacker = pokeA;
-		defender = pokeB;
+	
+	if(turnCount % 2 == 0) { //pokeA attacks on even turns
+		attacker = getPokeA();
+		defender = getPokeB();
 	} else { //pokB attacks on odd turns
-		attacker = pokeB;
-		defender = pokeA;
+		attacker = getPokeB();
+		defender = getPokeA();
 	}
-	cout << attacker.getName() << "'s turn" << endl;
-	attacker.setHp(attacker.getHp()-20);
 
-
-
-	if(turnCount % 2 == 0) { //pokA attacks on even turns
-		pokeA = attacker;
-		pokeB = defender;
-	} else { //pokB attacks on odd turns
-		pokeB = attacker;
-		pokeA = defender;
+	if(turnCount % 2 == 0) { 
+		setPokeA(attacker);
+		setPokeB(defender);
+	} else {
+		setPokeA(defender);
+		setPokeB(attacker);
 	}
-	pokeA = attacker;
 	turnCount++;
 }
 
-//Sets Team A
+//Setters
 void battle::setPokeA(pokemon p) {
 	pokeA = p;
 	pokeAset = 1;
 }
 
-//Sets Team B
 void battle::setPokeB(pokemon p) {
 	pokeB = p;
 	pokeBset = 1;
+}
+
+
+//Getters
+pokemon battle::getPokeA() {
+	return pokeA;
+}
+
+pokemon battle::getPokeB() {
+	return pokeB;
 }

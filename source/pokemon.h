@@ -17,7 +17,14 @@ public:
 	int defense;
 	int specDefense;
 	int speed;
+	int currentHp;
+	string infliction;
 	vector<pokemonMove> moveset;
+
+	void heal();
+	void heal(int i);
+	void damage(int i);
+	void kill();
 
 	//Constructors
 	pokemon();
@@ -45,6 +52,7 @@ public:
 	int getDefense();
 	int getSpecDefense();
 	int getSpeed();
+	int getCurrentHp();
 	vector<pokemonMove> getMoveset();
 };
 
