@@ -1,4 +1,5 @@
 #include "arena.h"
+#include "battle.h"
 #include "pokemon.h"
 #include <iostream>
 #include <vector>
@@ -6,50 +7,35 @@ using namespace std;
 
 //Initialises variables upon new instance
 void arena::init() {
-	pokeAset = 0;
-	pokeBset = 0;
-	turnCount = 0;
+	teamAset = 0;
+	teamBset = 0;
 }
 
-//Sets Team A
-void arena::setPokeA(pokemon tA) {
-	pokeA = tA;
-	pokeAset = 1;
-}
-
-//Sets Team B
-void arena::setPokeB(pokemon tB) {
-	pokeB = tB;
-	pokeBset = 1;
-}
-
-//Conducts battle between two pokemon
-void arena::battle() {
-	if(!pokeAset) { //Checks if both teams have been set
+//Checks if teams are ready, and starts battles between two pokemon
+void arena::startBattle() {
+	if(!teamAset) { //Checks if both teams have been set
 		cout << "Team A is not ready for battle!" << endl;
 		return;
-	} else if(!pokeBset) {
+	} else if(!teamBset) {
 		cout << "Team B is not ready for battle!" << endl;
 		return;
 	}
 	cout << "Both teams are ready for battle!" << endl;
 
-	int i = 0;
-	while(i++ < 5) {
-		doTurn();
-	}
+	battle battleA;
+	battleA.setPokeA(teamA[0]);
+	battleA.setPokeB(teamB[0]);
+	battleA.start();
 }
 
-void arena::doTurn() {
-	pokemon attacker;
-	pokemon defender;
-	if(turnCount % 2 == 0) { //pokA attacks on even turns
-		attacker = pokeA;
-		defender = pokeB;
-	} else { //pokB attacks on odd turns
-		attacker = pokeB;
-		defender = pokeA;
-	}
-	cout << attacker.getName() << "'s turn" << endl;
-	turnCount++;
+//Sets Team A
+void arena::setTeamA(vector<pokemon> t) {
+	teamA = t;
+	teamAset = 1;
+}
+
+//Sets Team B
+void arena::setTeamB(vector<pokemon> t) {
+	teamB = t;
+	teamBset = 1;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "game.h"
 #include "arena.h"
 #include "pokemon.h"
@@ -16,14 +17,24 @@ int main() {
 	game GameA;
 	GameA.init();
 
+	//Introduction, set up arena
 	cout << "Welcome to the Pokemon Battle Simulator!" << endl;
 	cout << "Lets get the arena ready for you." << endl;
 	arena ArenaA;
 	ArenaA.init();
 
-	ArenaA.setPokeA(bulbasaur);
-	ArenaA.setPokeB(charmander);
-	ArenaA.battle();
+	//Create and set pokemon teams
+	vector<pokemon> teamA;
+	teamA.push_back(bulbasaur);
+
+	vector<pokemon> teamB;
+	teamB.push_back(charmander);
+
+	ArenaA.setTeamA(teamA);
+	ArenaA.setTeamB(teamB);
+
+	//Start battle
+	ArenaA.startBattle();
 
 	int temp;
 	while(!GameA.gameOver) {
