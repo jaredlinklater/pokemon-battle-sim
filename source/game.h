@@ -3,7 +3,7 @@
 
 class game {
 public:
-	static int gameOver;
+	int gameOver;
 
 	void init();
 };

@@ -4,8 +4,6 @@
 #include "pokemonMove.h"
 using namespace std;
 
-int game::gameOver = 1;
-
 extern pokemon bulbasaur;
 extern pokemon charmander;
 extern pokemon squirtle;
@@ -16,14 +14,14 @@ void game::init() {
 
 	/*** Declare global objects ***/
 	//Declaring moves
-	pokemonMove blank("-",0),
-		scratch("Scratch",40),
-		growl("Growl",0),
-		tailwhip("Tail Whip",0),
+	pokemonMove blank("-", 0),
+		scratch("Scratch", 40),
+		growl("Growl", 0),
+		tailwhip("Tail Whip", 0),
 		tackle("Tackle", 40),
 		quickattack("Quick Attack", 30),
 		thunderbolt("Thunderbolt", 60),
-		psychic("Psychic",80);
+		psychic("Psychic", 80);
 
 	//Declaring Pokemon
 	//Bulbasaur
@@ -40,7 +38,7 @@ void game::init() {
 	charmanderMoves.push_back(growl);
 	charmanderMoves.push_back(blank);
 	charmanderMoves.push_back(blank);
-	charmander = pokemon("Charmander", 100, charmanderMoves); //hp = 80 change back
+	charmander = pokemon("Charmander", 80, charmanderMoves);
 
 	//Squirtle
 	vector<pokemonMove> squirtleMoves;

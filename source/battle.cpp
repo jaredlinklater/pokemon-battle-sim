@@ -11,43 +11,57 @@ void battle::init() {
 	turnCount = 0;
 }
 
-//Loop turns until a pokemon is knocked out
+//Turn loop; loops until a pokemon is knocked out
 void battle::start() {
-	for(int i = 0; i < 5; i++) {
-		trainer turnPlayer;
-		if(turnCount % 2 == 0) { //trainerA attacks on even turns
-			turnPlayer = trainerA;
+	if(!pokeAset) { //Checks if both teams have been set
+		cout << "Pokemon A is not ready for battle!" << endl;
+		return;
+	} else if(!pokeBset) {
+		cout << "Pokemon B is not ready for battle!" << endl;
+		return;
+	}
+	cout << "Both Pokemon are ready for battle!" << endl;
+
+	for(int i = 0; i < 6; i++) { //Determines turn player, attacking pokemon/defending pokemon and conducts turns
+		int even = (turnCount % 2 == 0);
+		if(even) { //trainerA attacks on even turns
+			setTurnPlayer(getTrainerA());
+			setAttacker(getPokeA());
+			setDefender(getPokeB());
 		} else { //trainerB attacks on odd turns
-			turnPlayer = trainerB;
+			setTurnPlayer(getTrainerB());
+			setAttacker(getPokeB());
+			setDefender(getPokeA());
 		}
-		doTurn(turnPlayer);
+
+		doTurn();
+
+		if(even) { //Update pokeA/pokeB's states
+			setPokeA(attacker);
+			setPokeB(defender);
+		} else {
+			setPokeA(defender);
+			setPokeB(attacker);
+		}
+		turnCount++;
 	}
 }
 
-//
-void battle::doTurn(trainer t) {
-	pokemon attacker;
-	pokemon defender;
-	
-	if(turnCount % 2 == 0) { //pokeA attacks on even turns
-		attacker = getPokeA();
-		defender = getPokeB();
-	} else { //pokB attacks on odd turns
-		attacker = getPokeB();
-		defender = getPokeA();
-	}
-
-	if(turnCount % 2 == 0) { 
-		setPokeA(attacker);
-		setPokeB(defender);
-	} else {
-		setPokeA(defender);
-		setPokeB(attacker);
-	}
-	turnCount++;
+//Conducts turn; asks questions, gets input, executes choices
+void battle::doTurn() {
+	cout << attacker.getName() << "'s turn" << endl;
 }
+
 
 //Setters
+void battle::setTrainerA(trainer t) {
+	trainerA = t;
+}
+
+void battle::setTrainerB(trainer t) {
+	trainerB = t;
+}
+
 void battle::setPokeA(pokemon p) {
 	pokeA = p;
 	pokeAset = 1;
@@ -58,12 +72,43 @@ void battle::setPokeB(pokemon p) {
 	pokeBset = 1;
 }
 
+void battle::setTurnPlayer(trainer t) {
+	turnPlayer = t;
+}
+
+void battle::setAttacker(pokemon p) {
+	attacker = p;
+}
+
+void battle::setDefender(pokemon p) {
+	defender = p;
+}
 
 //Getters
+trainer battle::getTrainerA() {
+	return trainerA;
+}
+
+trainer battle::getTrainerB() {
+	return trainerB;
+}
+
 pokemon battle::getPokeA() {
 	return pokeA;
 }
 
 pokemon battle::getPokeB() {
 	return pokeB;
+}
+
+trainer battle::getTurnPlayer() {
+	return turnPlayer;
+}
+
+pokemon battle::getAttacker() {
+	return attacker;
+}
+
+pokemon battle::getDefender() {
+	return defender;
 }

@@ -29,14 +29,23 @@ void arena::startBattle() {
 	battleA.start();
 }
 
-//Sets Team A
+
+//Setters
 void arena::setTeamA(vector<pokemon> t) {
 	teamA = t;
 	teamAset = 1;
 }
 
-//Sets Team B
 void arena::setTeamB(vector<pokemon> t) {
 	teamB = t;
 	teamBset = 1;
+}
+
+//Getters
+vector<pokemon> arena::getTeamA() {
+	return teamA;
+}
+
+vector<pokemon> arena::getTeamB() {
+	return teamB;
 }

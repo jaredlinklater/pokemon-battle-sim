@@ -26,9 +26,11 @@ public:
 	void damage(int i);
 	void kill();
 
+
 	//Constructors
 	pokemon();
 	pokemon(string s, int i, vector<pokemonMove> moves);
+
 
 	//Setters
 	void setId(int i);
@@ -40,6 +42,7 @@ public:
 	void setDefense(int i);
 	void setSpecDefense(int i);
 	void setSpeed(int i);
+	void setCurrentHp(int i);
 	void setMoveset(vector<pokemonMove> v);
 
 	//Getters

@@ -2,19 +2,6 @@
 #include <vector>
 using namespace std;
 
-//Constructors
-pokemon::pokemon() {
-	name = "missingno";
-}
-
-pokemon::pokemon(string s, int i, vector<pokemonMove> moves) {
-	name = s;
-	hp = i;
-	currentHp = hp;
-	moveset = moves;
-	infliction = "clear";
-}
-
 //Heals to full hp
 void pokemon::heal() {
 	currentHp = hp;
@@ -38,6 +25,21 @@ void pokemon::damage(int i) {
 void pokemon::kill() {
 	currentHp = 0;
 }
+
+
+//Constructors
+pokemon::pokemon() {
+	name = "missingno";
+}
+
+pokemon::pokemon(string s, int i, vector<pokemonMove> moves) {
+	name = s;
+	hp = i;
+	currentHp = hp;
+	moveset = moves;
+	infliction = "clear";
+}
+
 
 //Setters
 void pokemon::setId(int i) {
@@ -74,6 +76,10 @@ void pokemon::setSpecDefense(int i) {
 
 void pokemon::setSpeed(int i) {
 	speed = i;
+}
+
+void pokemon::setCurrentHp(int i) {
+	currentHp = i;
 }
 
 void pokemon::setMoveset(vector<pokemonMove> v) {

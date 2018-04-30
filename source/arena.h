@@ -17,9 +17,14 @@ public:
 	void startBattle();
 	void doTurn();
 
+
 	//Setters
 	void setTeamA(vector<pokemon> tA);
 	void setTeamB(vector<pokemon> tB);
+
+	//Getters
+	vector<pokemon> getTeamA();
+	vector<pokemon> getTeamB();
 };
 
 #endif
