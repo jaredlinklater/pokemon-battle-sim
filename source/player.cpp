@@ -1,8 +1,11 @@
 #include <iostream>
 #include "player.h"
 
-player::player() {
-	
+//Choose pokemon to switch to from team
+int player::getInput() {
+	int input;
+	cin >> input;
+	return input;
 }
 
 //Choose out of fight (1), items (2), pokemon (3) or run (4)
@@ -23,11 +26,4 @@ int player::chooseItem() {
 //Choose pokemon to switch to from team
 int player::choosePokemon() {
 	return getInput();
-}
-
-//Choose pokemon to switch to from team
-int player::getInput() {
-	int input;
-	cin >> input;
-	return input;
 }

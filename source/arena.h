@@ -19,7 +19,6 @@ public:
 
 	void init();
 	void startBattle();
-	void doTurn();
 
 
 	//Setters

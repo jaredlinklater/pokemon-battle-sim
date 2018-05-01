@@ -12,10 +12,21 @@ using namespace std;
 void arena::init() {
 	teamAset = 0;
 	teamBset = 0;
+	trainerAset = 0;
+	trainerBset = 0;
 }
 
 //Checks if teams are ready, and starts battles between two pokemon
 void arena::startBattle() {
+	if(!trainerAset) { //Checks if both trainers have been set
+		cout << "Trainer A is not ready for battle!" << endl;
+		return;
+	} else if(!trainerBset) {
+		cout << "Trainer B is not ready for battle!" << endl;
+		return;
+	}
+	cout << "Both trainers are ready for battle!" << endl;
+	
 	if(!teamAset) { //Checks if both teams have been set
 		cout << "Team A is not ready for battle!" << endl;
 		return;
@@ -25,16 +36,10 @@ void arena::startBattle() {
 	}
 	cout << "Both teams are ready for battle!" << endl;
 
-	player playerA;
-	ai aiA;
-
-	trainer *trainerA = &playerA;
-	trainer *trainerB = &aiA;
-
 	battle battleA;
 	battleA.init();
-	battleA.setTrainerA(trainerA);
-	battleA.setTrainerB(trainerB);
+	battleA.setTrainerA(getTrainerA());
+	battleA.setTrainerB(getTrainerB());
 	battleA.setPokeA(teamA[0]);
 	battleA.setPokeB(teamB[0]);
 	battleA.start();
@@ -61,7 +66,6 @@ void arena::setTeamB(vector<pokemon> t) {
 	teamB = t;
 	teamBset = 1;
 }
-
 
 //Getters
 trainer *arena::getTrainerA() {

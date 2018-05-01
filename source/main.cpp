@@ -16,14 +16,24 @@ pokemon squirtle;
 
 //Main function, containing game state loop
 int main() {
-	game GameA;
-	GameA.init();
+	game gameA;
+	gameA.init();
 
 	//Introduction, set up arena
 	cout << "Welcome to the Pokemon Battle Simulator!" << endl;
 	cout << "Let's get the arena ready for you." << endl;
-	arena ArenaA;
-	ArenaA.init();
+	arena arenaA;
+	arenaA.init();
+
+	//Create and set trainers
+	player playerA;
+	ai aiA;
+
+	trainer *trainerA = &playerA;
+	trainer *trainerB = &aiA;
+
+	arenaA.setTrainerA(trainerA);
+	arenaA.setTrainerB(trainerB);
 
 	//Create and set pokemon teams
 	vector<pokemon> teamA;
@@ -32,11 +42,11 @@ int main() {
 	vector<pokemon> teamB;
 	teamB.push_back(charmander);
 
-	ArenaA.setTeamA(teamA);
-	ArenaA.setTeamB(teamB);
+	arenaA.setTeamA(teamA);
+	arenaA.setTeamB(teamB);
 
 	//Start battle
-	ArenaA.startBattle();
+	arenaA.startBattle();
 
 
 	/*player playerA;
@@ -44,10 +54,10 @@ int main() {
 	cout << "input: " << playerA.chooseMove() << "." << endl;*/
 
 	int temp;
-	while(!GameA.gameOver) {
+	while(!gameA.gameOver) {
 		cin >> temp;
 		if(temp == 0) {
-			GameA.gameOver = 1;
+			gameA.gameOver = 1;
 		} else {
 			cout << "Still playing." << endl;
 		}
