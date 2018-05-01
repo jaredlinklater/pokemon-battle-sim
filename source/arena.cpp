@@ -1,5 +1,8 @@
 #include "arena.h"
 #include "battle.h"
+#include "trainer.h"
+#include "player.h"
+#include "ai.h"
 #include "pokemon.h"
 #include <iostream>
 #include <vector>
@@ -22,8 +25,16 @@ void arena::startBattle() {
 	}
 	cout << "Both teams are ready for battle!" << endl;
 
+	player playerA;
+	ai aiA;
+
+	trainer *trainerA = &playerA;
+	trainer *trainerB = &aiA;
+
 	battle battleA;
 	battleA.init();
+	battleA.setTrainerA(trainerA);
+	battleA.setTrainerB(trainerB);
 	battleA.setPokeA(teamA[0]);
 	battleA.setPokeB(teamB[0]);
 	battleA.start();
@@ -31,6 +42,16 @@ void arena::startBattle() {
 
 
 //Setters
+void arena::setTrainerA(trainer *t) {
+	trainerA = t;
+	trainerAset = 1;
+}
+
+void arena::setTrainerB(trainer *t) {
+	trainerB = t;
+	trainerBset = 1;
+}
+
 void arena::setTeamA(vector<pokemon> t) {
 	teamA = t;
 	teamAset = 1;
@@ -41,7 +62,16 @@ void arena::setTeamB(vector<pokemon> t) {
 	teamBset = 1;
 }
 
+
 //Getters
+trainer *arena::getTrainerA() {
+	return trainerA;
+}
+
+trainer *arena::getTrainerB() {
+	return trainerB;
+}
+
 vector<pokemon> arena::getTeamA() {
 	return teamA;
 }

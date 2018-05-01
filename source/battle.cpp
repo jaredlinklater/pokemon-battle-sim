@@ -50,15 +50,16 @@ void battle::start() {
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
 	cout << attacker.getName() << "'s turn" << endl;
+	cout << "input: " << turnPlayer->chooseOption() << endl;
 }
 
 
 //Setters
-void battle::setTrainerA(trainer t) {
+void battle::setTrainerA(trainer *t) {
 	trainerA = t;
 }
 
-void battle::setTrainerB(trainer t) {
+void battle::setTrainerB(trainer *t) {
 	trainerB = t;
 }
 
@@ -72,7 +73,7 @@ void battle::setPokeB(pokemon p) {
 	pokeBset = 1;
 }
 
-void battle::setTurnPlayer(trainer t) {
+void battle::setTurnPlayer(trainer *t) {
 	turnPlayer = t;
 }
 
@@ -85,11 +86,11 @@ void battle::setDefender(pokemon p) {
 }
 
 //Getters
-trainer battle::getTrainerA() {
+trainer *battle::getTrainerA() {
 	return trainerA;
 }
 
-trainer battle::getTrainerB() {
+trainer *battle::getTrainerB() {
 	return trainerB;
 }
 
@@ -101,7 +102,7 @@ pokemon battle::getPokeB() {
 	return pokeB;
 }
 
-trainer battle::getTurnPlayer() {
+trainer *battle::getTurnPlayer() {
 	return turnPlayer;
 }
 
