@@ -1,11 +1,11 @@
+#include <iostream>
+#include <vector>
 #include "arena.h"
 #include "battle.h"
 #include "trainer.h"
 #include "player.h"
 #include "ai.h"
 #include "pokemon.h"
-#include <iostream>
-#include <vector>
 using namespace std;
 
 //Initialises variables upon new instance
@@ -26,7 +26,7 @@ void arena::startBattle() {
 		return;
 	}
 	cout << "Both trainers are ready for battle!" << endl;
-	
+
 	if(!teamAset) { //Checks if both teams have been set
 		cout << "Team A is not ready for battle!" << endl;
 		return;

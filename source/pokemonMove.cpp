@@ -1,5 +1,5 @@
-#include "pokemonMove.h"
 #include <vector>
+#include "pokemonMove.h"
 using namespace std;
 
 

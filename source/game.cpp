@@ -1,16 +1,21 @@
+#include <iostream>
 #include <vector>
 #include "game.h"
+#include "trainer.h"
+#include "player.h"
+#include "ai.h"
+#include "arena.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
 using namespace std;
 
-extern pokemon bulbasaur;
-extern pokemon charmander;
-extern pokemon squirtle;
+pokemon bulbasaur;
+pokemon charmander;
+pokemon squirtle;
 
 //Initialises variables upon new instance
 void game::init() {
-	gameOver = 0;
+	cout << "Welcome to the Pokemon Battle Simulator!" << endl;
 
 	/*** Declare global objects ***/
 	//Declaring moves
@@ -47,4 +52,34 @@ void game::init() {
 	squirtleMoves.push_back(blank);
 	squirtleMoves.push_back(blank);
 	squirtle = pokemon("Squirtle", 120, squirtleMoves);
+}
+
+void game::start() {
+	//Set up arena
+	cout << "Let's get the arena ready for you." << endl;
+	arena arenaA;
+	arenaA.init();
+
+	//Create and set trainers
+	player playerA;
+	ai aiA;
+
+	trainer *trainerA = &playerA;
+	trainer *trainerB = &aiA;
+
+	arenaA.setTrainerA(trainerA);
+	arenaA.setTrainerB(trainerB);
+
+	//Create and set pokemon teams
+	vector<pokemon> teamA;
+	teamA.push_back(bulbasaur);
+
+	vector<pokemon> teamB;
+	teamB.push_back(charmander);
+
+	arenaA.setTeamA(teamA);
+	arenaA.setTeamB(teamB);
+
+	//Start battle
+	arenaA.startBattle();
 }

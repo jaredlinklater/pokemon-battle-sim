@@ -1,8 +1,8 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#include <vector>
 #include <string>
+#include <vector>
 #include "pokemonMove.h"
 using namespace std;
 
@@ -25,6 +25,7 @@ public:
 	void heal(int i);
 	void damage(int i);
 	void kill();
+	string hpFraction();
 
 
 	//Constructors

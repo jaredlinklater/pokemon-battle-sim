@@ -6,6 +6,7 @@ public:
 	int gameOver;
 
 	void init();
+	void start();
 };
 
 #endif

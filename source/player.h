@@ -6,8 +6,6 @@ using namespace std;
 
 class player: public trainer {
 public:
-	string name;
-
 	int getInput(); //Gets basic integer input from terminal
 	int chooseOption(); //Choose out of fight (1), items (2), pokemon (3) or run (4)
 	int chooseMove(); //Choose out of first move (1), second move (2), third move (3) or fourth move(4)

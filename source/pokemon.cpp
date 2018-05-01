@@ -1,5 +1,5 @@
-#include "pokemon.h"
 #include <vector>
+#include "pokemon.h"
 using namespace std;
 
 //Heals to full hp
@@ -24,6 +24,12 @@ void pokemon::damage(int i) {
 //Sets current HP to 0
 void pokemon::kill() {
 	currentHp = 0;
+}
+
+//Returns HP as a fraction (currentHp/hp)
+string pokemon::hpFraction() {
+	string temp = to_string(getCurrentHp()) + "/" + to_string(getHp());
+	return temp;
 }
 
 

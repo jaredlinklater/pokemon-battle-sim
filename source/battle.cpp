@@ -1,7 +1,7 @@
-#include "battle.h"
-#include "pokemon.h"
 #include <iostream>
 #include <vector>
+#include "battle.h"
+#include "pokemon.h"
 using namespace std;
 
 //Initialises variables upon new instance
@@ -13,7 +13,7 @@ void battle::init() {
 
 //Turn loop; loops until a pokemon is knocked out
 void battle::start() {
-	if(!pokeAset) { //Checks if both teams have been set
+	if(!pokeAset) { //Checks if both pokemon have been set
 		cout << "Pokemon A is not ready for battle!" << endl;
 		return;
 	} else if(!pokeBset) {
@@ -49,8 +49,13 @@ void battle::start() {
 
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
-	cout << attacker.getName() << "'s turn" << endl;
-	cout << "input: " << turnPlayer->chooseOption() << endl;
+	cout << endl << attacker.getName() << "'s turn" << endl;
+	cout << "Test: damage attacker for 30hp" << endl;
+	cout << "Before damage: " << attacker.hpFraction() << endl;
+	attacker.damage(30);
+	cout << "After damage: " << attacker.hpFraction() << endl;
+
+	//cout << "input: " << turnPlayer->chooseOption() << endl;
 }
 
 
