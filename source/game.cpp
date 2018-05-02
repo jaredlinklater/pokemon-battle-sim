@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include "game.h"
 #include "trainer.h"
@@ -8,6 +9,8 @@
 #include "pokemon.h"
 #include "pokemonMove.h"
 using namespace std;
+
+vector<pokemon> pokemonList; //Pokemon is pushed onto this each time pokemon constructor is called
 
 pokemon bulbasaur;
 pokemon charmander;
@@ -24,9 +27,9 @@ void game::init() {
 		growl("Growl", 0),
 		tailwhip("Tail Whip", 0),
 		tackle("Tackle", 40),
-		quickattack("Quick Attack", 30),
-		thunderbolt("Thunderbolt", 60),
-		psychic("Psychic", 80);
+		quick_attack("Quick Attack", 40),
+		thunderbolt("Thunderbolt", 90),
+		psychic("Psychic", 90);
 
 	//Declaring Pokemon
 	//Bulbasaur
@@ -54,6 +57,7 @@ void game::init() {
 	squirtle = pokemon("Squirtle", 120, squirtleMoves);
 }
 
+//Sets up initial game state
 void game::start() {
 	//Set up arena
 	cout << "Let's get the arena ready for you." << endl;
@@ -74,8 +78,10 @@ void game::start() {
 	arenaA.setTrainerB(trainerB);
 
 	//Create and set pokemon teams
+	choosePokemon();
+
 	vector<pokemon> teamA;
-	teamA.push_back(bulbasaur);
+	teamA.push_back(pokeA);
 
 	vector<pokemon> teamB;
 	teamB.push_back(charmander);
@@ -85,4 +91,32 @@ void game::start() {
 
 	//Start battle
 	arenaA.startBattle();
+}
+
+//Prompts user to select pokemon
+void game::choosePokemon() {
+	cout << "Please choose which pokemon you would like to battle with." << endl;
+	cout << "There are " << pokemonList.size() << " available pokemon, they are:" << endl;
+	for(int i = 0; i < pokemonList.size(); i++) {
+		cout << i+1 << ": " << pokemonList[i].getName() << endl;
+	}
+
+	int sel = getInput(1, pokemonList.size());
+	cout << "You chose " << pokemonList[sel-1].getName() << "!" << endl;
+	pokeA = pokemonList[sel-1];
+}
+
+//Gets int input from command line and error checks
+int game::getInput(int min, int max) {
+	int input;
+	string x;
+
+	getline(cin, x);
+	stringstream(x) >> input;
+	while(!(input >= min && input <= max)) { //Error checking
+		cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
+		getline(cin, x);
+		stringstream(x) >> input;
+	}
+	return input;
 }

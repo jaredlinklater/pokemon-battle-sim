@@ -7,11 +7,11 @@ using namespace std;
 
 class player: public trainer {
 public:
-	int getInput(int min, int max); //Gets basic integer input from terminal
 	int chooseOption(); //Choose out of fight (1), items (2), pokemon (3) or run (4)
 	pokemonMove chooseMove(); //Choose out of first move (1), second move (2), third move (3) or fourth move(4)
 	int chooseItem(); //Choose item to use from list of items
 	int choosePokemon(); //Choose pokemon to switch to from team
+	int getInput(int min, int max); //Gets int input from terminal and error checks
 };
 
 #endif

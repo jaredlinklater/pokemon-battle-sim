@@ -2,6 +2,8 @@
 #include "pokemon.h"
 using namespace std;
 
+extern vector<pokemon> pokemonList;
+
 //Heals to full hp
 void pokemon::heal() {
 	currentHp = hp;
@@ -44,6 +46,7 @@ pokemon::pokemon(string s, int i, vector<pokemonMove> moves) {
 	currentHp = hp;
 	moveset = moves;
 	infliction = "clear";
+	pokemonList.push_back(*this);
 }
 
 
