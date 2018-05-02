@@ -10,10 +10,10 @@ using namespace std;
 
 //Initialises variables upon new instance
 void arena::init() {
-	teamAset = 0;
-	teamBset = 0;
-	trainerAset = 0;
-	trainerBset = 0;
+	teamAset = false;
+	teamBset = false;
+	trainerAset = false;
+	trainerBset = false;
 }
 
 //Checks if teams are ready, and starts battles between two pokemon
@@ -49,22 +49,22 @@ void arena::startBattle() {
 //Setters
 void arena::setTrainerA(trainer *t) {
 	trainerA = t;
-	trainerAset = 1;
+	trainerAset = true;
 }
 
 void arena::setTrainerB(trainer *t) {
 	trainerB = t;
-	trainerBset = 1;
+	trainerBset = true;
 }
 
 void arena::setTeamA(vector<pokemon> t) {
 	teamA = t;
-	teamAset = 1;
+	teamAset = true;
 }
 
 void arena::setTeamB(vector<pokemon> t) {
 	teamB = t;
-	teamBset = 1;
+	teamBset = true;
 }
 
 //Getters

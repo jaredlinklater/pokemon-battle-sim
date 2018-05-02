@@ -12,9 +12,12 @@ public:
 	trainer *trainerB;
 	pokemon pokeA; //Pokemon in the battle (main memory)
 	pokemon pokeB;
-	int pokeAset;
-	int pokeBset;
+	bool pokeAset;
+	bool pokeBset;
 	int turnCount;
+	bool battleOver;
+	pokemon winner;
+	pokemon loser;
 
 	trainer *turnPlayer; //Used to keep track of turn player (controller for that turn)
 	pokemon attacker; //Copies of pokeA & pokeB that are copied to, altered and wrote back each turn (temp memory)
@@ -28,6 +31,7 @@ public:
 	void endTurn();
 
 	void doAttack();
+	void checkAlive();
 
 
 	//Setters
@@ -38,6 +42,8 @@ public:
 	void setTurnPlayer(trainer *t);
 	void setAttacker(pokemon p);
 	void setDefender(pokemon p);
+	void setWinner(pokemon p);
+	void setLoser(pokemon p);
 
 	//Getters
 	trainer *getTrainerA();
@@ -47,6 +53,8 @@ public:
 	trainer *getTurnPlayer();
 	pokemon getAttacker();
 	pokemon getDefender();
+	pokemon getWinner();
+	pokemon getLoser();
 };
 
 #endif
