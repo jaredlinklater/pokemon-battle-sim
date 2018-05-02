@@ -38,13 +38,12 @@ void battle::startTurn() {
 		setTurnPlayer(getTrainerA());
 		setAttacker(getPokeA());
 		setDefender(getPokeB());
-		turnPlayer->setAttacker(getAttacker());
 	} else { //trainerB attacks on odd turns
 		setTurnPlayer(getTrainerB());
 		setAttacker(getPokeB());
 		setDefender(getPokeA());
 	}
-	//turnPlayer->setCurrentBattle(&this);
+	turnPlayer->setAttacker(getAttacker());
 }
 
 //Conducts turn; asks questions, gets input, executes choices
