@@ -3,6 +3,7 @@
 
 #include "trainer.h"
 #include "pokemon.h"
+#include "pokemonMove.h"
 using namespace std;
 
 class battle {
@@ -11,18 +12,22 @@ public:
 	trainer *trainerB;
 	pokemon pokeA; //Pokemon in the battle (main memory)
 	pokemon pokeB;
-	trainer *turnPlayer; //Used to keep track of turn player (controller for that turn)
-	pokemon attacker; //Copies of pokeA & pokeB that are copied to, altered and wrote back each turn (temp memory)
-	pokemon defender;
 	int pokeAset;
 	int pokeBset;
 	int turnCount;
+
+	trainer *turnPlayer; //Used to keep track of turn player (controller for that turn)
+	pokemon attacker; //Copies of pokeA & pokeB that are copied to, altered and wrote back each turn (temp memory)
+	pokemon defender;
+	pokemonMove move; //Selected move for the turn
 
 	void init();
 	void start();
 	void startTurn();
 	void doTurn();
 	void endTurn();
+
+	void doAttack();
 
 
 	//Setters

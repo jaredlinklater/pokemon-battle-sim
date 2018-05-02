@@ -10,6 +10,8 @@ void battle::init() {
 	pokeAset = 0;
 	pokeBset = 0;
 	turnCount = 0;
+	pokemonMove temp("battle.initMove", 0);
+	move = temp;
 }
 
 //Turn loop; loops until a pokemon is knocked out
@@ -48,12 +50,13 @@ void battle::startTurn() {
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
 	cout << endl << turnPlayer->getName() << "'s turn" << endl;
+	cout << attacker.getName() << ": " << attacker.hpFraction() << endl;
+	cout << defender.getName() << ": " << defender.hpFraction() << endl;
 
 	int sel = turnPlayer->chooseOption(); //Get choice
-
-	pokemonMove move;
 	switch(sel) {
 		case 1: move = turnPlayer->chooseMove();
+				doAttack();
 				break;
 		case 2: turnPlayer->chooseItem();
 				break;
@@ -62,13 +65,6 @@ void battle::doTurn() {
 		case 4: exit(0);
 				break;
 	}
-	
-	cout << "Test: damage attacker for 30hp" << endl;
-	cout << "Before damage: " << attacker.hpFraction() << endl;
-	attacker.damage(30);
-	cout << "After damage: " << attacker.hpFraction() << endl;
-
-	//cout << "input: " << turnPlayer->chooseOption() << endl;
 }
 
 //Writes attackers and defenders back to memory
@@ -81,6 +77,13 @@ void battle::endTurn() {
 		setPokeB(attacker);
 	}
 	turnCount++;
+}
+
+void battle::doAttack() {
+	cout << attacker.getName() << " used " << move.getName() << "!" << endl;
+	int damage = move.getDamage();
+	defender.damage(damage);
+	cout << defender.getName() << " took " << damage << " points of damage!" << endl;
 }
 
 //Setters

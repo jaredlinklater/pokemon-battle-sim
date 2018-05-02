@@ -7,7 +7,7 @@ int ai::chooseOption() {
 
 //Choose out of first move (1), second move (2), third move (3) or fourth move(4)
 pokemonMove ai::chooseMove() {
-	pokemonMove temp("temp", 0);
+	pokemonMove temp("AI.tempMove", 0);
 	return temp;
 }
 
