@@ -48,7 +48,7 @@ void battle::startTurn() {
 
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
-	cout << endl << turnPlayer->getName() << "'s turn" << endl;
+	cout << endl << endl << turnPlayer->getName() << "'s turn" << endl;
 	cout << attacker.getName() << ": " << attacker.hpFraction() << endl;
 	cout << defender.getName() << ": " << defender.hpFraction() << endl;
 
@@ -83,6 +83,9 @@ void battle::doAttack() {
 	int damage = move.getDamage();
 	defender.damage(damage);
 	cout << defender.getName() << " took " << damage << " points of damage!" << endl;
+	if(defender.getCurrentHp() == 0) {
+		cout << defender.getName() << " was knocked out!" << endl;
+	}
 }
 
 //Setters

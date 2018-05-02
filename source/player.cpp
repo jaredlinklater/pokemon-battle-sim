@@ -1,11 +1,20 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 #include "player.h"
 
 //Choose pokemon to switch to from team
-int player::getInput() {
+int player::getInput(int min, int max) {
 	int input;
-	cin >> input;
+	string x;
+
+	getline(cin, x);
+	stringstream(x) >> input;
+	while(!(input >= min && input <= max)) { //Error checking
+		cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
+		getline(cin, x);
+		stringstream(x) >> input;
+	}
 	return input;
 }
 
@@ -13,11 +22,7 @@ int player::getInput() {
 int player::chooseOption() {
 	printOption("1", "Fight"); printOption("2", "Items"); cout << endl;
 	printOption("3", "Pokemon"); printOption("4", "Run"); cout << endl;
-	int sel = getInput();
-	while(!(sel > 0 && sel < 5)) { //Error checking
-		cout << "Invalid selection! Please enter a number from 1 to 4." << endl;
-		sel = getInput();
-	}
+	int sel = getInput(1, 4);
 	return sel;
 }
 
@@ -26,20 +31,16 @@ pokemonMove player::chooseMove() {
 	vector<pokemonMove> moveset = attacker.getMoveset();
 	printOption("1", moveset[0].getName()); printOption("2", moveset[1].getName()); cout << endl;
 	printOption("3", moveset[2].getName()); printOption("4", moveset[3].getName()); cout << endl;
-	int sel = getInput();
-	while(!(sel > 0 && sel < 5)) { //Error checking
-		cout << "Invalid selection! Please enter a number from 1 to 4." << endl;
-		sel = getInput();
-	}
+	int sel = getInput(1, 4);
 	return moveset[sel-1];
 }
 
 //Choose item to use from list of items
 int player::chooseItem() {
-	return getInput();
+	return getInput(1, 4);
 }
 
 //Choose pokemon to switch to from team
 int player::choosePokemon() {
-	return getInput();
+	return getInput(1, 4);
 }
