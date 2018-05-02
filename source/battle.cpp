@@ -22,34 +22,29 @@ void battle::start() {
 	}
 	cout << "Both Pokemon are ready for battle!" << endl;
 
-	for(int i = 0; i < 6; i++) { //Determines turn player, attacking pokemon/defending pokemon and conducts turns
-		int even = (turnCount % 2 == 0);
-		if(even) { //trainerA attacks on even turns
-			setTurnPlayer(getTrainerA());
-			setAttacker(getPokeA());
-			setDefender(getPokeB());
-		} else { //trainerB attacks on odd turns
-			setTurnPlayer(getTrainerB());
-			setAttacker(getPokeB());
-			setDefender(getPokeA());
-		}
-
+	while(turnCount < 6) { //Conducts turns
+		startTurn();
 		doTurn();
+		endTurn();
+	}
+}
 
-		if(even) { //Update pokeA/pokeB's states
-			setPokeA(attacker);
-			setPokeB(defender);
-		} else {
-			setPokeA(defender);
-			setPokeB(attacker);
-		}
-		turnCount++;
+//Sets turn player, attackers and defenders for the turn
+void battle::startTurn() {
+	if(turnCount % 2 == 0) { //trainerA attacks on even turns
+		setTurnPlayer(getTrainerA());
+		setAttacker(getPokeA());
+		setDefender(getPokeB());
+	} else { //trainerB attacks on odd turns
+		setTurnPlayer(getTrainerB());
+		setAttacker(getPokeB());
+		setDefender(getPokeA());
 	}
 }
 
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
-	cout << endl << attacker.getName() << "'s turn" << endl;
+	cout << endl << turnPlayer->getName() << "'s turn" << endl;
 	cout << "Test: damage attacker for 30hp" << endl;
 	cout << "Before damage: " << attacker.hpFraction() << endl;
 	attacker.damage(30);
@@ -58,6 +53,17 @@ void battle::doTurn() {
 	//cout << "input: " << turnPlayer->chooseOption() << endl;
 }
 
+//Writes attackers and defenders back to memory
+void battle::endTurn() {
+	if(turnCount % 2 == 0) { //Update pokeA/pokeB's states
+		setPokeA(attacker);
+		setPokeB(defender);
+	} else {
+		setPokeA(defender);
+		setPokeB(attacker);
+	}
+	turnCount++;
+}
 
 //Setters
 void battle::setTrainerA(trainer *t) {

@@ -64,6 +64,9 @@ void game::start() {
 	player playerA;
 	ai aiA;
 
+	playerA.setName("RED");
+	aiA.setName("BLUE");
+
 	trainer *trainerA = &playerA;
 	trainer *trainerB = &aiA;
 
