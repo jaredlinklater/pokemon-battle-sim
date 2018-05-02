@@ -2,6 +2,7 @@
 #include <vector>
 #include "battle.h"
 #include "pokemon.h"
+#include "pokemonMove.h"
 using namespace std;
 
 //Initialises variables upon new instance
@@ -35,16 +36,33 @@ void battle::startTurn() {
 		setTurnPlayer(getTrainerA());
 		setAttacker(getPokeA());
 		setDefender(getPokeB());
+		turnPlayer->setAttacker(getAttacker());
 	} else { //trainerB attacks on odd turns
 		setTurnPlayer(getTrainerB());
 		setAttacker(getPokeB());
 		setDefender(getPokeA());
 	}
+	//turnPlayer->setCurrentBattle(&this);
 }
 
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
 	cout << endl << turnPlayer->getName() << "'s turn" << endl;
+
+	int sel = turnPlayer->chooseOption(); //Get choice
+
+	pokemonMove move;
+	switch(sel) {
+		case 1: move = turnPlayer->chooseMove();
+				break;
+		case 2: turnPlayer->chooseItem();
+				break;
+		case 3: turnPlayer->choosePokemon();
+				break;
+		case 4: exit(0);
+				break;
+	}
+	
 	cout << "Test: damage attacker for 30hp" << endl;
 	cout << "Before damage: " << attacker.hpFraction() << endl;
 	attacker.damage(30);

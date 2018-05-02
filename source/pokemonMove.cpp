@@ -4,6 +4,11 @@ using namespace std;
 
 
 //Constructor
+pokemonMove::pokemonMove() {
+	name = "temp";
+	damage = 0;
+}
+
 pokemonMove::pokemonMove(string s, int i) {
 	name = s;
 	damage = i;

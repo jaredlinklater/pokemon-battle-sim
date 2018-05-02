@@ -19,6 +19,7 @@ public:
 
 
 	//Constructor
+	pokemonMove();
 	pokemonMove(string s, int i);
 
 
