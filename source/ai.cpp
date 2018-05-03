@@ -15,7 +15,7 @@ int ai::chooseOption() {
 
 //Choose out of first move (1), second move (2), third move (3) or fourth move(4)
 pokemonMove ai::chooseMove() {
-	return attacker.getMoveset()[getRandom(0,1)];
+	return attacker.getMoveset()[getRandom(0,3)];
 }
 
 //Choose item to use from list of items

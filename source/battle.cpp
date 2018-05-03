@@ -55,18 +55,24 @@ void battle::doTurn() {
 	cout << attacker.getName() << ": " << attacker.hpFraction() << endl;
 	cout << defender.getName() << ": " << defender.hpFraction() << endl;
 
-	int sel = turnPlayer->chooseOption(); //Get choice
-	switch(sel) {
-		case 1: move = turnPlayer->chooseMove();
-				doAttack();
-				break;
-		case 2: turnPlayer->chooseItem();
-				break;
-		case 3: turnPlayer->choosePokemon();
-				break;
-		case 4: exit(0);
-				break;
-	}
+	int sel;
+	do { //Ensures users can only choose implemented features
+		sel = turnPlayer->chooseOption(); //Get choice
+		switch(sel) {
+			case 1: move = turnPlayer->chooseMove();
+					doAttack();
+					break;
+			case 2: cout << "Sorry, items are not yet implemented." << endl << endl;
+					//turnPlayer->chooseItem();
+					break;
+			case 3: cout << "Sorry, pokemon switching is not yet implemented." << endl << endl;
+					//turnPlayer->choosePokemon();
+					break;
+			case 4: cout << "You surrenered!" << endl << "Thanks for playing." << endl;
+					exit(0);
+					break;
+		}
+	} while(sel != 1 || sel != 4);
 }
 
 //Writes attackers and defenders back to memory
