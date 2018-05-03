@@ -13,8 +13,8 @@ public:
 	vector<string> types;
 	int hp;
 	int attack;
-	int specAttack;
 	int defense;
+	int specAttack;
 	int specDefense;
 	int speed;
 	int currentHp;
@@ -31,6 +31,7 @@ public:
 	//Constructors
 	pokemon();
 	pokemon(string s, int i, vector<pokemonMove> moves);
+	pokemon(string s, string typs, int hitp, int atk, int def, int spatk, int spdef, int spd, vector<pokemonMove> moves);
 
 
 	//Setters
@@ -39,8 +40,8 @@ public:
 	void setTypes(vector<string> v);
 	void setHp(int i);
 	void setAttack(int i);
-	void setSpecAttack(int i);
 	void setDefense(int i);
+	void setSpecAttack(int i);
 	void setSpecDefense(int i);
 	void setSpeed(int i);
 	void setCurrentHp(int i);
@@ -52,8 +53,8 @@ public:
 	vector<string> getTypes();
 	int getHp();
 	int getAttack();
-	int getSpecAttack();
 	int getDefense();
+	int getSpecAttack();
 	int getSpecDefense();
 	int getSpeed();
 	int getCurrentHp();

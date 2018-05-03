@@ -14,6 +14,14 @@ pokemonMove::pokemonMove(string s, int i) {
 	damage = i;
 }
 
+pokemonMove::pokemonMove(string s, int pwr, int acc, string typ, string cat) {
+	name = s;
+	damage = pwr;
+	accuracy = float(acc)/100;
+	type = typ;
+	category = cat;
+}
+
 
 //Setters
 void pokemonMove::setName(string s) {
@@ -24,16 +32,16 @@ void pokemonMove::setType(string s) {
 	type = s;
 }
 
-void pokemonMove::setIsSpecAtk(bool b) {
-	isSpecAtk = b;
+void pokemonMove::setCategory(string s) {
+	category = s;
 }
 
 void pokemonMove::setDamage(int i) {
 	damage = i;
 }
 
-void pokemonMove::setAccuracy(double d) {
-	accuracy = d;
+void pokemonMove::setAccuracy(float f) {
+	accuracy = f;
 }
 
 //Getters
@@ -45,14 +53,14 @@ string pokemonMove::getType() {
 	return type;
 }
 
-bool pokemonMove::getIsSpecAtk() {
-	return isSpecAtk;
+string pokemonMove::getCategory() {
+	return category;
 }
 
 int pokemonMove::getDamage() {
 	return damage;
 }
 
-double pokemonMove::getAccuracy() {
+float pokemonMove::getAccuracy() {
 	return accuracy;
 }

@@ -9,9 +9,9 @@ class pokemonMove {
 public:
 	string name;
 	string type;
-	bool isSpecAtk;
+	string category;
 	int damage;
-	double accuracy;
+	float accuracy;
 
 	/*string statFocus;
 	double statProb;
@@ -21,21 +21,22 @@ public:
 	//Constructor
 	pokemonMove();
 	pokemonMove(string s, int i);
+	pokemonMove(string s, int pwr, int acc, string typ, string cat);
 
 
 	//Setters
 	void setName(string s);
 	void setType(string s);
-	void setIsSpecAtk(bool b);
+	void setCategory(string s);
 	void setDamage(int i);
-	void setAccuracy(double d);
+	void setAccuracy(float f);
 
 	//Getters
 	string getName();
 	string getType();
-	bool getIsSpecAtk();
+	string getCategory();
 	int getDamage();
-	double getAccuracy();
+	float getAccuracy();
 };
 
 #endif

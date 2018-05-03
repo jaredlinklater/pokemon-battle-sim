@@ -68,11 +68,11 @@ void battle::doTurn() {
 			case 3: cout << "Sorry, pokemon switching is not yet implemented." << endl << endl;
 					//turnPlayer->choosePokemon();
 					break;
-			case 4: cout << "You surrenered!" << endl << "Thanks for playing." << endl;
+			case 4: cout << "You surrendered!" << endl << "Thanks for playing." << endl;
 					exit(0);
 					break;
 		}
-	} while(sel != 1 || sel != 4);
+	} while(sel == 2 || sel == 3);
 }
 
 //Writes attackers and defenders back to memory

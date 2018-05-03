@@ -1,3 +1,5 @@
+#include <sstream>
+#include <iterator>
 #include <vector>
 #include "pokemon.h"
 using namespace std;
@@ -43,6 +45,27 @@ pokemon::pokemon() {
 pokemon::pokemon(string s, int i, vector<pokemonMove> moves) {
 	name = s;
 	hp = i;
+	currentHp = hp;
+	moveset = moves;
+	infliction = "clear";
+	pokemonList.push_back(*this);
+}
+
+pokemon::pokemon(string s, string typs, int hitp, int atk, int def, int spatk, int spdef, int spd, vector<pokemonMove> moves) {
+	name = s;
+
+	stringstream ss(typs); //Splits typs string into two types vector
+	istream_iterator<string> begin(ss);
+	istream_iterator<string> end;
+	vector<string> typesVect(begin, end);
+	types = typesVect;
+
+	hp = hitp;
+	attack = atk;
+	defense = def;
+	specAttack = spatk;
+	specDefense = spdef;
+	speed = spd;
 	currentHp = hp;
 	moveset = moves;
 	infliction = "clear";
