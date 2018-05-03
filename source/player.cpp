@@ -32,15 +32,15 @@ int player::choosePokemon() {
 
 //Gets int input from command line and error checks
 int player::getInput(int min, int max) {
-	int input;
+	int input = NULL;
 	string x;
 
-	getline(cin, x);
-	stringstream(x) >> input;
-	while(!(input >= min && input <= max)) { //Error checking
-		cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
+	do { //Error checking
+		if(input != NULL)
+			cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
 		getline(cin, x);
 		stringstream(x) >> input;
-	}
+	} while(!(input >= min && input <= max));
+
 	return input;
 }

@@ -28,33 +28,30 @@ void game::init() {
 		tailwhip("Tail Whip", 0),
 		tackle("Tackle", 40),
 		quick_attack("Quick Attack", 40),
+		ember("Ember", 40),
+		water_gun("Water Gun", 40),
+		vine_whip("Vine Whip", 45),
+		razor_leaf("Razor Leaf", 45),
+		bite("Bite", 60),
+		slash("Slash", 70),
 		thunderbolt("Thunderbolt", 90),
 		psychic("Psychic", 90);
 
 	//Declaring Pokemon
 	//Bulbasaur
-	vector<pokemonMove> bulbasaurMoves;
-	bulbasaurMoves.push_back(tackle);
-	bulbasaurMoves.push_back(growl);
-	bulbasaurMoves.push_back(blank);
-	bulbasaurMoves.push_back(blank);
-	bulbasaur = pokemon("Bulbasaur", 100, bulbasaurMoves);
+	static const pokemonMove arr0[] = {tackle, growl, vine_whip, razor_leaf};
+	vector<pokemonMove> bulbasaurMoves(arr0, arr0 + sizeof(arr0) / sizeof(arr0[0]));
+	bulbasaur = pokemon("Bulbasaur", 200, bulbasaurMoves);
 
 	//Charmander
-	vector<pokemonMove> charmanderMoves;
-	charmanderMoves.push_back(scratch);
-	charmanderMoves.push_back(growl);
-	charmanderMoves.push_back(blank);
-	charmanderMoves.push_back(blank);
-	charmander = pokemon("Charmander", 80, charmanderMoves);
+	static const pokemonMove arr1[] = {scratch, growl, ember, slash};
+	vector<pokemonMove> charmanderMoves(arr1, arr1 + sizeof(arr1) / sizeof(arr1[0]));
+	charmander = pokemon("Charmander", 170, charmanderMoves);
 
 	//Squirtle
-	vector<pokemonMove> squirtleMoves;
-	squirtleMoves.push_back(tackle);
-	squirtleMoves.push_back(tailwhip);
-	squirtleMoves.push_back(blank);
-	squirtleMoves.push_back(blank);
-	squirtle = pokemon("Squirtle", 120, squirtleMoves);
+	static const pokemonMove arr2[] = {tackle, tailwhip, water_gun, bite};
+	vector<pokemonMove> squirtleMoves(arr2, arr2 + sizeof(arr2) / sizeof(arr2[0]));
+	squirtle = pokemon("Squirtle", 230, squirtleMoves);
 }
 
 //Sets up initial game state
@@ -108,15 +105,15 @@ void game::choosePokemon() {
 
 //Gets int input from command line and error checks
 int game::getInput(int min, int max) {
-	int input;
+	int input = NULL;
 	string x;
 
-	getline(cin, x);
-	stringstream(x) >> input;
-	while(!(input >= min && input <= max)) { //Error checking
-		cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
+	do { //Error checking
+		if(input != NULL)
+			cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
 		getline(cin, x);
 		stringstream(x) >> input;
-	}
+	} while(!(input >= min && input <= max));
+
 	return input;
 }
