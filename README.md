@@ -9,12 +9,16 @@ Early goals for the project include:
 Mid goals include:
 - Implementing type effectiveness/STAB bonuses
 - Adding more Pokemon
-- Adding items such as Potions and Berries
 - Adding stat-adjusting moves
 - Improving enemy AI to make smarter decisions
 - Allowing parties of Pokemon to be created and battled
+- Adding graphical elements (illustrated HP bars, dialog boxes, etc)
 
 Distant goals include:
 - Allow customisation of existing Pokemon's stats, moves, etc.
 - Adding networking so users may battle eachother
 - Adding gym-like opponents to battle against
+
+
+Optional goals:
+- Adding items such as Potions and Berries
