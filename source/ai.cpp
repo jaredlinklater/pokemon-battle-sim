@@ -1,10 +1,12 @@
-#include <cstdlib>
+#include <stdlib.h>
+#include <time.h>
 #include <vector>
 #include "ai.h"
 #include "pokemonMove.h"
 
 //Generates random int betweek min and max inclusively
 int ai::getRandom(int min, int max) {
+	srand(time(NULL));
 	return rand() % (max+1) + min;
 }
 

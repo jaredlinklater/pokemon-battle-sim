@@ -12,7 +12,6 @@ public:
 	void start();
 
 	void choosePokemon();
-	int getInput(int min, int max);
 };
 
 #endif

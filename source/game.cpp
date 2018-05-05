@@ -10,11 +10,16 @@
 #include "pokemonMove.h"
 using namespace std;
 
+vector<pokemonMove> moveset(pokemonMove a, pokemonMove b, pokemonMove c, pokemonMove d);
+int getInput(int min, int max);
+
 vector<pokemon> pokemonList; //Pokemon is pushed onto this each time pokemon constructor is called
 
 pokemon bulbasaur;
 pokemon charmander;
 pokemon squirtle;
+pokemon eevee;
+pokemon porygon;
 
 //Initialises variables upon new instance
 void game::init() {
@@ -25,33 +30,36 @@ void game::init() {
 	pokemonMove blank("-", 0),
 		scratch("Scratch", 40, 100, "normal", "physical"),
 		growl("Growl", 0, 100, "normal", "other"),
-		tailwhip("Tail Whip", 0, 100, "normal", "other"),
 		tackle("Tackle", 40, 100, "normal", "physical"),
 		quick_attack("Quick Attack", 40, 100, "normal", "physical"),
 		ember("Ember", 40, 100, "fire", "special"),
 		water_gun("Water Gun", 40, 100, "water", "special"),
 		vine_whip("Vine Whip", 45, 100, "grass", "physical"),
 		razor_leaf("Razor Leaf", 45, 95, "grass", "physical"),
+		swift("Swift", 60, 1000, "normal", "special"),
 		bite("Bite", 60, 100, "dark", "physical"),
+		psybeam("Psybeam", 65, 100, "psychic", "special"),
 		slash("Slash", 70, 100, "normal", "physical"),
 		thunderbolt("Thunderbolt", 90, 100, "electric", "special"),
-		psychic("Psychic", 90, 100, "psychic", "special");
+		psychic("Psychic", 90, 100, "psychic", "special"),
+		tailwhip("Tail Whip", 0, 100, "normal", "other"),
+		recover("Recover", 0, 1000, "normal", "other");
 
 	//Declaring Pokemon
 	//Bulbasaur
-	static const pokemonMove arr0[] = {tackle, growl, vine_whip, razor_leaf};
-	vector<pokemonMove> bulbasaurMoves(arr0, arr0 + sizeof(arr0) / sizeof(arr0[0]));
-	bulbasaur = pokemon("Bulbasaur", "grass -", 294, 197, 229, 197, 229, 189, bulbasaurMoves);
+	bulbasaur = pokemon("Bulbasaur", "grass -", 294, 197, 229, 197, 229, 189, moveset(tackle, growl, vine_whip, razor_leaf));
 
 	//Charmander
-	static const pokemonMove arr1[] = {scratch, growl, ember, slash};
-	vector<pokemonMove> charmanderMoves(arr1, arr1 + sizeof(arr1) / sizeof(arr1[0]));
-	charmander = pokemon("Charmander", "fire -", 282, 203, 185, 219, 199, 229, charmanderMoves);
+	charmander = pokemon("Charmander", "fire -", 282, 203, 185, 219, 199, 229, moveset(scratch, growl, ember, slash));
 
 	//Squirtle
-	static const pokemonMove arr2[] = {tackle, tailwhip, water_gun, bite};
-	vector<pokemonMove> squirtleMoves(arr2, arr2 + sizeof(arr2) / sizeof(arr2[0]));
-	squirtle = pokemon("Squirtle", "water -", 292, 195, 229, 199, 227, 185, squirtleMoves);
+	squirtle = pokemon("Squirtle", "water -", 292, 195, 229, 199, 227, 185, moveset(tackle, tailwhip, water_gun, bite));
+
+	//Eevee
+	eevee = pokemon("Eevee", "normal -", 314, 209, 199, 189, 229, 209, moveset(tackle, quick_attack, bite, swift));
+
+	//Porygon
+	porygon = pokemon("Porygon", "normal -", 334, 219, 239, 269, 249, 179, moveset(tackle, psybeam, bite, swift));
 }
 
 //Sets up initial game state
@@ -103,8 +111,15 @@ void game::choosePokemon() {
 	pokeA = pokemonList[sel-1];
 }
 
+//Pushes 4 pokemonMoves into a vector and returns the vector
+vector<pokemonMove> moveset(pokemonMove a, pokemonMove b, pokemonMove c, pokemonMove d) {
+	pokemonMove arr[] = {a, b, c, d};
+	vector<pokemonMove> moves(arr, arr + sizeof(arr) / sizeof(arr[0]));
+	return moves;
+}
+
 //Gets int input from command line and error checks
-int game::getInput(int min, int max) {
+int getInput(int min, int max) {
 	int input;
 	string x;
 
