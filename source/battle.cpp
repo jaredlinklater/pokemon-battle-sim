@@ -58,9 +58,9 @@ void battle::startTurn() {
 void battle::doTurn() {
 	system("clear");
 	//cout << endl << endl;
-	cout << turnPlayer->getName() << "'s turn" << endl;
-	cout << attacker.getName() << ": " << attacker.hpFraction() << endl;
-	cout << defender.getName() << ": " << defender.hpFraction() << endl;
+	cout << "\033[4m" << turnPlayer->getName() << "'s turn\033[0m" << endl;
+	cout << turnPlayer->getName() << "'s " << attacker.getName() << ": " << attacker.hpFraction() << endl;
+	cout << "Opponent's " << defender.getName() << ": " << defender.hpFraction() << endl;
 
 	int sel;
 	do { //Ensures users can only choose implemented features
