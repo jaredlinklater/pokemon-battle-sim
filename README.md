@@ -10,6 +10,8 @@ Mid goals include:
 - Implementing type effectiveness/STAB bonuses
 - Adding more Pokemon
 - Adding stat-adjusting moves
+- Add held items
+- Add Pokemon switching mid-battle
 - Improving enemy AI to make smarter decisions
 - Allowing parties of Pokemon to be created and battled
 - Adding graphical elements (illustrated HP bars, dialog boxes, etc)
