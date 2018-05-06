@@ -71,9 +71,11 @@ void game::start() {
 
 	//Create and set trainers
 	player playerA;
-	ai aiA;
-
+	playerA.setType("player");
 	playerA.setName("RED");
+
+	ai aiA;
+	aiA.setType("ai");
 	aiA.setName("BLUE");
 
 	trainer *trainerA = &playerA;

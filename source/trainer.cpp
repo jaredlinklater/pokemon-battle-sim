@@ -18,6 +18,10 @@ void trainer::setName(string s) {
 	name = s;
 }
 
+void trainer::setType(string s) {
+	type = s;
+}
+
 //Getters
 pokemon trainer::getAttacker() {
 	return attacker;
@@ -25,4 +29,8 @@ pokemon trainer::getAttacker() {
 
 string trainer::getName() {
 	return name;
+}
+
+string trainer::getType() {
+	return type;
 }

@@ -1,9 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <unistd.h> //usleep
 #include "battle.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
 using namespace std;
+
+unsigned int sleepTime = 1200;
+
+void msleep(unsigned int i);
 
 //Initialises variables upon new instance
 void battle::init() {
@@ -51,7 +56,9 @@ void battle::startTurn() {
 
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
-	cout << endl << endl << turnPlayer->getName() << "'s turn" << endl;
+	system("clear");
+	//cout << endl << endl;
+	cout << turnPlayer->getName() << "'s turn" << endl;
 	cout << attacker.getName() << ": " << attacker.hpFraction() << endl;
 	cout << defender.getName() << ": " << defender.hpFraction() << endl;
 
@@ -90,10 +97,14 @@ void battle::endTurn() {
 
 //Conducts attack and determines of battle should end
 void battle::doAttack() {
+	if(turnPlayer->getType() == "ai")
+		msleep(sleepTime);
 	cout << attacker.getName() << " used " << move.getName() << "!" << endl;
+	msleep(sleepTime);
 	int damage = move.getDamage();
 	defender.damage(damage);
 	cout << defender.getName() << " took " << damage << " points of damage!" << endl;
+	msleep(sleepTime);
 }
 
 //Checks if both pokemon are still able to fight
@@ -114,6 +125,10 @@ void battle::checkAlive() {
 	}
 }
 
+//Sleeps for i milliseconds
+void msleep(unsigned int i) {
+	usleep(i * 1000);
+}
 
 
 //Setters

@@ -4,4 +4,4 @@ main: main.o game.o arena.o battle.o pokemon.o pokemonMove.o trainer.o player.o 
 	g++ -o $@ $^
 
 clean:
-	rm main *.o 
+	rm *.o 
