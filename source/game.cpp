@@ -23,7 +23,11 @@ pokemon porygon;
 
 //Initialises variables upon new instance
 void game::init() {
+	system("clear");
 	cout << "Welcome to the Pokemon Battle Simulator!" << endl;
+
+	//Initialise random seed
+	srand(time(NULL));
 
 	/*** Declare global objects ***/
 	//Declaring moves

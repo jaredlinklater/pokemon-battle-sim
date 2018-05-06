@@ -6,17 +6,17 @@ using namespace std;
 //Constructor
 pokemonMove::pokemonMove() {
 	name = "temp";
-	damage = 0;
+	power = 0;
 }
 
 pokemonMove::pokemonMove(string s, int i) {
 	name = s;
-	damage = i;
+	power = i;
 }
 
 pokemonMove::pokemonMove(string s, int pwr, int acc, string typ, string cat) {
 	name = s;
-	damage = pwr;
+	power = pwr;
 	accuracy = float(acc)/100;
 	type = typ;
 	category = cat;
@@ -36,8 +36,8 @@ void pokemonMove::setCategory(string s) {
 	category = s;
 }
 
-void pokemonMove::setDamage(int i) {
-	damage = i;
+void pokemonMove::setPower(int i) {
+	power = i;
 }
 
 void pokemonMove::setAccuracy(float f) {
@@ -57,8 +57,8 @@ string pokemonMove::getCategory() {
 	return category;
 }
 
-int pokemonMove::getDamage() {
-	return damage;
+int pokemonMove::getPower() {
+	return power;
 }
 
 float pokemonMove::getAccuracy() {

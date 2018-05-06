@@ -10,7 +10,7 @@ public:
 	string name;
 	string type;
 	string category;
-	int damage;
+	int power;
 	float accuracy;
 
 	/*string statFocus;
@@ -28,14 +28,14 @@ public:
 	void setName(string s);
 	void setType(string s);
 	void setCategory(string s);
-	void setDamage(int i);
+	void setPower(int i);
 	void setAccuracy(float f);
 
 	//Getters
 	string getName();
 	string getType();
 	string getCategory();
-	int getDamage();
+	int getPower();
 	float getAccuracy();
 };
 

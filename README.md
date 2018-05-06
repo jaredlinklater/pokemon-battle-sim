@@ -7,7 +7,8 @@ Early goals for the project include:
 - Creating a very basic opponent AI to battle against	(completed 03/05/18)
 
 Mid goals include:
-- Implementing type effectiveness/STAB bonuses
+- Implementing type effectiveness, STAB, critical, etc	(completed 07/05/18)
+- Limit move use with PP
 - Adding more Pokemon
 - Adding stat-adjusting moves
 - Add held items
@@ -25,3 +26,8 @@ Distant goals include:
 
 Optional goals:
 - Adding items such as Potions and Berries
+
+
+
+Versions:
+Early goals complete: https://github.com/jaredlinklater/pokemon-battle-sim/tree/2557e4a706be2af64baaa5afecabbb5b10d3cbee

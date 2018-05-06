@@ -2,6 +2,7 @@
 #include <vector>
 #include <unistd.h> //usleep
 #include "battle.h"
+#include "attack.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
 using namespace std;
@@ -17,7 +18,7 @@ void battle::init() {
 	turnCount = 0;
 	battleOver = false;
 	pokemonMove temp("battle.initMove", 0);
-	move = temp;
+	pMove = temp;
 }
 
 //Turn loop; loops until a pokemon is knocked out
@@ -66,7 +67,7 @@ void battle::doTurn() {
 	do { //Ensures users can only choose implemented features
 		sel = turnPlayer->chooseOption(); //Get choice
 		switch(sel) {
-			case 1: move = turnPlayer->chooseMove();
+			case 1: pMove = turnPlayer->chooseMove();
 					doAttack();
 					break;
 			case 2: cout << "Sorry, items are not yet implemented." << endl << endl;
@@ -95,14 +96,18 @@ void battle::endTurn() {
 	turnCount++;
 }
 
-//Conducts attack and determines of battle should end
+//Conducts attack and determines if battle should end
 void battle::doAttack() {
 	if(turnPlayer->getType() == "ai")
 		msleep(sleepTime);
-	cout << attacker.getName() << " used " << move.getName() << "!" << endl;
+	cout << attacker.getName() << " used " << pMove.getName() << "!" << endl;
 	msleep(sleepTime);
-	int damage = move.getDamage();
+
+	attack atk(attacker, pMove, defender);
+	atk.init();
+	int damage = atk.calcDamage(); //calculate damage using formula
 	defender.damage(damage);
+
 	cout << defender.getName() << " took " << damage << " points of damage!" << endl;
 	msleep(sleepTime);
 }

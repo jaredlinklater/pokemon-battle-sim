@@ -22,7 +22,7 @@ public:
 	trainer *turnPlayer; //Used to keep track of turn player (controller for that turn)
 	pokemon attacker; //Copies of pokeA & pokeB that are copied to, altered and wrote back each turn (temp memory)
 	pokemon defender;
-	pokemonMove move; //Selected move for the turn
+	pokemonMove pMove; //Selected move for the turn
 
 	void init();
 	void start();
