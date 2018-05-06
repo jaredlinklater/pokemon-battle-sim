@@ -15,6 +15,7 @@ Mid goals include:
 - Improving enemy AI to make smarter decisions
 - Allowing parties of Pokemon to be created and battled
 - Adding graphical elements (illustrated HP bars, dialog boxes, etc)
+- Implement save files
 
 Distant goals include:
 - Allow customisation of existing Pokemon's stats, moves, etc.
