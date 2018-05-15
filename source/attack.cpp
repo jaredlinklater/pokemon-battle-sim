@@ -94,7 +94,7 @@ float attack::calcModifier() {
 
 //Generates random int betweek min and max inclusively
 int attack::randomInt(int min, int max) {
-	return rand()%(max-min) + min;
+	return rand()%(max-min+1) + min;
 }
 
 

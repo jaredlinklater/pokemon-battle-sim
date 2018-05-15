@@ -45,3 +45,9 @@ int player::getInput(int min, int max) {
 
 	return input;
 }
+
+
+//Constructors
+player::player() {
+	type = "player";
+}

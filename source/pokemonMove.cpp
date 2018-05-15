@@ -3,7 +3,7 @@
 using namespace std;
 
 
-//Constructor
+//Constructors
 pokemonMove::pokemonMove() {
 	name = "temp";
 	power = 0;

@@ -11,6 +11,10 @@ public:
 	int chooseItem(); //Choose item to use from list of items
 	int choosePokemon(); //Choose pokemon to switch to from team
 	int randomInt(int min, int max); //Generates random int betweek min and max inclusively
+
+
+	//Constructors
+	ai();
 };
 
 #endif

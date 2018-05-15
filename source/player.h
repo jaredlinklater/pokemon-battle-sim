@@ -12,6 +12,9 @@ public:
 	int chooseItem(); //Choose item to use from list of items
 	int choosePokemon(); //Choose pokemon to switch to from team
 	int getInput(int min, int max); //Gets int input from terminal and error checks
+
+	//Constructors
+	player();
 };
 
 #endif

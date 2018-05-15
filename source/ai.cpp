@@ -26,5 +26,11 @@ int ai::choosePokemon() {
 
 //Generates random int betweek min and max inclusively
 int ai::randomInt(int min, int max) {
-	return rand()%(max-min) + min;
+	return rand()%(max-min+1) + min;
+}
+
+
+//Constructors
+ai::ai() {
+	type = "ai";
 }

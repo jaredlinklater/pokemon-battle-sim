@@ -12,8 +12,9 @@ using namespace std;
 
 vector<pokemonMove> moveset(pokemonMove a, pokemonMove b, pokemonMove c, pokemonMove d);
 int getInput(int min, int max);
+int randomInt(int min, int max);
 
-vector<pokemon> pokemonList; //Pokemon is pushed onto this each time pokemon constructor is called
+vector<pokemon> pokemonList; //Pokemon object is pushed onto this each time pokemon constructor is called
 
 pokemon bulbasaur;
 pokemon charmander;
@@ -29,7 +30,6 @@ void game::init() {
 	//Initialise random seed
 	srand(time(NULL));
 
-	/*** Declare global objects ***/
 	//Declaring moves
 	pokemonMove blank("-", 0),
 		scratch("Scratch", 40, 100, "normal", "physical"),
@@ -49,6 +49,7 @@ void game::init() {
 		tailwhip("Tail Whip", 0, 100, "normal", "other"),
 		recover("Recover", 0, 1000, "normal", "other");
 
+	/*** Declare global objects ***/
 	//Declaring Pokemon
 	//Bulbasaur
 	bulbasaur = pokemon("Bulbasaur", "grass -", 294, 197, 229, 197, 229, 189, moveset(tackle, growl, vine_whip, razor_leaf));
@@ -68,35 +69,51 @@ void game::init() {
 
 //Sets up initial game state
 void game::start() {
-	//Set up arena
-	cout << "Let's get the arena ready for you." << endl;
+	//Used for game setup
+	player playerMain;
+
+	//Possible trainers
+	player playerA;
+	player playerB;
+	ai aiA;
+	ai aiB;
+
+	trainer *trainerA;
+	trainer *trainerB;
+
+	//Arena setup
 	arena arenaA;
 	arenaA.init();
+	vector<pokemon> teamA;
+	vector<pokemon> teamB;
 
-	//Create and set trainers
-	player playerA;
-	playerA.setType("player");
-	playerA.setName("RED");
+	//Game setup choice
+	cout << "Would you like to use express settings (play against AI with random pokemon) or with custom settings?" << endl;
+	cout << "1: Express settings" << endl;
+	cout << "2: Custom settings" << endl;
+	int sel = playerMain.getInput(1,2);
 
-	ai aiA;
-	aiA.setType("ai");
-	aiA.setName("BLUE");
+	if(sel == 1) { //Express settings
+		playerA.setName("RED");
+		aiA.setName("BLUE");
+		trainerA = &playerA;
+		trainerB = &aiA;
 
-	trainer *trainerA = &playerA;
-	trainer *trainerB = &aiA;
+		teamA.push_back(choosePokemon());
+		teamB.push_back(pokemonList[randomInt(0,pokemonList.size()-1)]);
+	} else if(sel == 2) { //Custom settings
+		playerA.setName("RED");
+		aiA.setName("BLUE");
+		trainerA = &playerA;
+		trainerB = &aiA;
 
+		teamA.push_back(choosePokemon());
+		teamB.push_back(pokemonList[randomInt(0,pokemonList.size()-1)]);
+	}
+
+	//Set chosen settings
 	arenaA.setTrainerA(trainerA);
 	arenaA.setTrainerB(trainerB);
-
-	//Create and set pokemon teams
-	choosePokemon();
-
-	vector<pokemon> teamA;
-	teamA.push_back(pokeA);
-
-	vector<pokemon> teamB;
-	teamB.push_back(charmander);
-
 	arenaA.setTeamA(teamA);
 	arenaA.setTeamB(teamB);
 
@@ -105,7 +122,7 @@ void game::start() {
 }
 
 //Prompts user to select pokemon
-void game::choosePokemon() {
+pokemon game::choosePokemon() {
 	cout << "Please choose which pokemon you would like to battle with." << endl;
 	cout << "There are " << pokemonList.size() << " available pokemon, they are:" << endl;
 	for(int i = 0; i < pokemonList.size(); i++) {
@@ -114,7 +131,12 @@ void game::choosePokemon() {
 
 	int sel = getInput(1, pokemonList.size());
 	cout << "You chose " << pokemonList[sel-1].getName() << "!" << endl;
-	pokeA = pokemonList[sel-1];
+	return pokemonList[sel-1];
+}
+
+//Gets and returns string from command line
+string game::chooseTrainerName() {
+	//
 }
 
 //Pushes 4 pokemonMoves into a vector and returns the vector
@@ -138,4 +160,9 @@ int getInput(int min, int max) {
 	}
 
 	return input;
+}
+
+//Get random int from min to max inclusively
+int randomInt(int min, int max) {
+	return rand()%(max-min+1) + min;
 }

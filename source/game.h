@@ -11,7 +11,8 @@ public:
 	void init();
 	void start();
 
-	void choosePokemon();
+	pokemon choosePokemon();
+	string chooseTrainerName();
 };
 
 #endif

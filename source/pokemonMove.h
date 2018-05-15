@@ -18,7 +18,7 @@ public:
 	double statMultiplier;*/
 
 
-	//Constructor
+	//Constructors
 	pokemonMove();
 	pokemonMove(string s, int i);
 	pokemonMove(string s, int pwr, int acc, string typ, string cat);
