@@ -38,7 +38,7 @@ void battle::start() {
 		endTurn();
 	}
 
-	cout << endl << winner.getName() << " won the battle!" << endl;
+	cout << endl << winnerTrainer->getName() << " and " << winnerPoke.getName() << " won the battle!" << endl;
 }
 
 //Sets turn player, attackers and defenders for the turn
@@ -118,14 +118,14 @@ void battle::checkAlive() {
 		cout << "Both pokemon were knocked out!" << endl;
 		battleOver = true;
 	} else if(pokeA.getCurrentHp() == 0) {
-		cout << pokeA.getName() << " was knocked out!" << endl;
-		winner = pokeB;
-		loser = pokeA;
+		cout << trainerA->getName() << "'s " << pokeA.getName() << " was knocked out!" << endl;
+		winnerTrainer = trainerB;
+		winnerPoke = pokeB;
 		battleOver = true;
 	} else if(pokeB.getCurrentHp() == 0) {
-		cout << pokeB.getName() << " was knocked out!" << endl;
-		winner = pokeA;
-		loser = pokeB;
+		cout << trainerB->getName() << "'s " << pokeB.getName() << " was knocked out!" << endl;
+		winnerTrainer = trainerA;
+		winnerPoke = pokeA;
 		battleOver = true;
 	}
 }
@@ -155,14 +155,6 @@ void battle::setPokeB(pokemon p) {
 	pokeBset = true;
 }
 
-void battle::setWinner(pokemon p) {
-	winner = p;
-}
-
-void battle::setLoser(pokemon p) {
-	loser = p;
-}
-
 void battle::setTurnPlayer(trainer *t) {
 	turnPlayer = t;
 }
@@ -173,6 +165,14 @@ void battle::setAttacker(pokemon p) {
 
 void battle::setDefender(pokemon p) {
 	defender = p;
+}
+
+void battle::setWinnerTrainer(trainer *t) {
+	winnerTrainer = t;
+}
+
+void battle::setWinnerPoke(pokemon p) {
+	winnerPoke = p;
 }
 
 //Getters
@@ -204,10 +204,10 @@ pokemon battle::getDefender() {
 	return defender;
 }
 
-pokemon battle::getWinner() {
-	return winner;
+trainer *battle::getWinnerTrainer() {
+	return winnerTrainer;
 }
 
-pokemon battle::getLoser() {
-	return loser;
+pokemon battle::getWinnerPoke() {
+	return winnerPoke;
 }
