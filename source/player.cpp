@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <sstream>
 #include "player.h"
 
 //Choose out of fight (1), items (2), pokemon (3) or run (4)
@@ -28,22 +27,6 @@ int player::chooseItem() {
 //Choose pokemon to switch to from team
 int player::choosePokemon() {
 	return getInput(1, 4);
-}
-
-//Gets int input from command line and error checks
-int player::getInput(int min, int max) {
-	int input;
-	string x;
-
-	getline(cin, x);
-	stringstream(x) >> input;
-	while(!(input >= min && input <= max)) { //Error checking
-		cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
-		getline(cin, x);
-		stringstream(x) >> input;
-	}
-
-	return input;
 }
 
 

@@ -1,6 +1,7 @@
 #ifndef AI_H
 #define AI_H
 
+#include "global.h"
 #include "trainer.h"
 using namespace std;
 
@@ -10,7 +11,6 @@ public:
 	pokemonMove chooseMove(); //Choose out of first move (1), second move (2), third move (3) or fourth move(4)
 	int chooseItem(); //Choose item to use from list of items
 	int choosePokemon(); //Choose pokemon to switch to from team
-	int randomInt(int min, int max); //Generates random int betweek min and max inclusively
 
 
 	//Constructors

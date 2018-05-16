@@ -1,6 +1,7 @@
 #ifndef ATTACK_H
 #define ATTACK_H
 #include <map>
+#include "global.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
 
@@ -18,7 +19,6 @@ public:
 	void init();
 	int calcDamage();
 	float calcModifier();
-	int randomInt(int min, int max);
 
 	//Constructors
 	attack(pokemon atk, pokemonMove mv, pokemon def);

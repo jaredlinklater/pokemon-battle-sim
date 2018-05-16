@@ -92,11 +92,6 @@ float attack::calcModifier() {
 	return random * STAB * typeEff * critical * other;
 }
 
-//Generates random int betweek min and max inclusively
-int attack::randomInt(int min, int max) {
-	return rand()%(max-min+1) + min;
-}
-
 
 //Constructors
 attack::attack(pokemon atk, pokemonMove mv, pokemon def) {

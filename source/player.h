@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "global.h"
 #include "trainer.h"
 #include "pokemon.h"
 using namespace std;
@@ -11,7 +12,6 @@ public:
 	pokemonMove chooseMove(); //Choose out of first move (1), second move (2), third move (3) or fourth move(4)
 	int chooseItem(); //Choose item to use from list of items
 	int choosePokemon(); //Choose pokemon to switch to from team
-	int getInput(int min, int max); //Gets int input from terminal and error checks
 
 	//Constructors
 	player();

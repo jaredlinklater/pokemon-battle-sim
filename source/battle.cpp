@@ -57,8 +57,7 @@ void battle::startTurn() {
 
 //Conducts turn; asks questions, gets input, executes choices
 void battle::doTurn() {
-	system("clear");
-	//cout << endl << endl;
+	clearScreen();
 	cout << "\033[4m" << turnPlayer->getName() << "'s turn\033[0m" << endl;
 	cout << turnPlayer->getName() << "'s " << attacker.getName() << ": " << attacker.hpFraction() << endl;
 	cout << "Opponent's " << defender.getName() << ": " << defender.hpFraction() << endl;

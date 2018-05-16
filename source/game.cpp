@@ -1,6 +1,6 @@
 #include <iostream>
-#include <sstream>
 #include <vector>
+#include "global.h"
 #include "game.h"
 #include "trainer.h"
 #include "player.h"
@@ -12,7 +12,6 @@ using namespace std;
 
 vector<pokemonMove> moveset(pokemonMove a, pokemonMove b, pokemonMove c, pokemonMove d);
 int getInput(int min, int max);
-int randomInt(int min, int max);
 
 vector<pokemon> pokemonList; //Pokemon object is pushed onto this each time pokemon constructor is called
 
@@ -24,7 +23,7 @@ pokemon porygon;
 
 //Initialises variables upon new instance
 void game::init() {
-	system("clear");
+	clearScreen();
 	cout << "Welcome to the Pokemon Battle Simulator!" << endl;
 
 	//Initialise random seed
@@ -91,24 +90,48 @@ void game::start() {
 	cout << "Would you like to use express settings (play against AI with random pokemon) or with custom settings?" << endl;
 	cout << "1: Express settings" << endl;
 	cout << "2: Custom settings" << endl;
-	int sel = playerMain.getInput(1,2);
 
+	int sel = getInput(1,2);
 	if(sel == 1) { //Express settings
-		playerA.setName("RED");
-		aiA.setName("BLUE");
 		trainerA = &playerA;
 		trainerB = &aiA;
+		trainerA->setName("RED");
+		trainerB->setName("BLUE");
 
+		cout << "Please choose which pokemon you would like to battle with." << endl;
 		teamA.push_back(choosePokemon());
 		teamB.push_back(pokemonList[randomInt(0,pokemonList.size()-1)]);
 	} else if(sel == 2) { //Custom settings
-		playerA.setName("RED");
-		aiA.setName("BLUE");
-		trainerA = &playerA;
-		trainerB = &aiA;
+		//Get gamemode
+		cout << "Please choose which gamemode you would like:" << endl;
+		cout << "1. Player vs AI" << endl;
+		cout << "2. Player vs Player" << endl;
+		cout << "3. AI vs AI" << endl;
 
+		sel = getInput(1,3);
+		switch(sel) {
+			case 1: trainerA = &playerA;
+					trainerB = &aiA;
+					break;
+			case 2: trainerA = &playerA;
+					trainerB = &playerB;
+					break;
+			case 3: trainerA = &aiA;
+					trainerB = &aiB;
+					break;
+		}
+
+		//Get trainer names
+		cout << "What is " << trainerA->getType() << " 1's name?" << endl;
+		trainerA->setName(getInputString(15));
+		cout << "What is " << trainerB->getType() << " 2's name?" << endl;
+		trainerB->setName(getInputString(15));
+
+		//Get pokemon
+		cout << "Please choose which pokemon " << trainerA->getName() << " will battle with." << endl;
 		teamA.push_back(choosePokemon());
-		teamB.push_back(pokemonList[randomInt(0,pokemonList.size()-1)]);
+		cout << "Please choose which pokemon " << trainerB->getName() << " will battle with." << endl;
+		teamB.push_back(choosePokemon());
 	}
 
 	//Set chosen settings
@@ -123,7 +146,6 @@ void game::start() {
 
 //Prompts user to select pokemon
 pokemon game::choosePokemon() {
-	cout << "Please choose which pokemon you would like to battle with." << endl;
 	cout << "There are " << pokemonList.size() << " available pokemon, they are:" << endl;
 	for(int i = 0; i < pokemonList.size(); i++) {
 		cout << i+1 << ": " << pokemonList[i].getName() << endl;
@@ -134,35 +156,9 @@ pokemon game::choosePokemon() {
 	return pokemonList[sel-1];
 }
 
-//Gets and returns string from command line
-string game::chooseTrainerName() {
-	//
-}
-
 //Pushes 4 pokemonMoves into a vector and returns the vector
 vector<pokemonMove> moveset(pokemonMove a, pokemonMove b, pokemonMove c, pokemonMove d) {
 	pokemonMove arr[] = {a, b, c, d};
 	vector<pokemonMove> moves(arr, arr + sizeof(arr) / sizeof(arr[0]));
 	return moves;
-}
-
-//Gets int input from command line and error checks
-int getInput(int min, int max) {
-	int input;
-	string x;
-
-	getline(cin, x);
-	stringstream(x) >> input;
-	while(!(input >= min && input <= max)) { //Error checking
-		cout << "Invalid selection! Please enter a number from " << min << " to " << max << "." << endl;
-		getline(cin, x);
-		stringstream(x) >> input;
-	}
-
-	return input;
-}
-
-//Get random int from min to max inclusively
-int randomInt(int min, int max) {
-	return rand()%(max-min+1) + min;
 }
