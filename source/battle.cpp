@@ -41,6 +41,8 @@ void battle::start() {
 	cout << endl << winnerTrainer->getName() << " and " << winnerPoke.getName() << " won the battle!" << endl;
 }
 
+//Turn structure: attack, attack, endTurn
+
 //Sets turn player, attackers and defenders for the turn
 void battle::startTurn() {
 	if(turnCount % 2 == 0) { //trainerA attacks on even turns

@@ -8,6 +8,7 @@ Early goals for the project include:
 
 Mid goals include:
 - Implementing type effectiveness, STAB, critical, etc        (completed 07/05/18)
+- Correct turn priority (factoring in speed)
 - Add status ailments
 - Limit move use with PP
 - Adding more Pokemon
