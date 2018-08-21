@@ -27,8 +27,10 @@ public:
 	void init();
 	void start();
 	void startTurn();
+	void getChoice();
 	void doTurn();
 	void endTurn();
+	void startTurnPair();
 
 	void doAttack();
 	void checkAlive();

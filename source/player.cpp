@@ -29,6 +29,11 @@ int player::choosePokemon() {
 	return getInput(1, 4);
 }
 
+//Make decisions and store them
+void player::makeChoice() {
+	//
+}
+
 
 //Constructors
 player::player() {

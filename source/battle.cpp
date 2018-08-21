@@ -41,20 +41,39 @@ void battle::start() {
 	cout << endl << winnerTrainer->getName() << " and " << winnerPoke.getName() << " won the battle!" << endl;
 }
 
-//Turn structure: attack, attack, endTurn
+//Turn structure: choose*2, attack, attack, endTurn
 
 //Sets turn player, attackers and defenders for the turn
 void battle::startTurn() {
-	if(turnCount % 2 == 0) { //trainerA attacks on even turns
-		setTurnPlayer(getTrainerA());
-		setAttacker(getPokeA());
-		setDefender(getPokeB());
-	} else { //trainerB attacks on odd turns
-		setTurnPlayer(getTrainerB());
-		setAttacker(getPokeB());
-		setDefender(getPokeA());
-	}
-	turnPlayer->setAttacker(getAttacker());
+	trainerA->makeChoice();
+	trainerB->makeChoice();
+}
+
+//Sets turn player, attackers and defenders for the turn
+void battle::getChoice() {
+	clearScreen();
+	cout << "\033[4m" << turnPlayer->getName() << "'s turn\033[0m" << endl;
+	cout << turnPlayer->getName() << "'s " << attacker.getName() << ": " << attacker.hpFraction() << endl;
+	cout << "Opponent's " << defender.getName() << ": " << defender.hpFraction() << endl;
+
+	int sel;
+	do { //Ensures users can only choose implemented features
+		sel = turnPlayer->chooseOption(); //Get choice
+		switch(sel) {
+			case 1: pMove = turnPlayer->chooseMove();
+					doAttack();
+					break;
+			case 2: cout << "Sorry, items are not yet implemented." << endl << endl;
+					//turnPlayer->chooseItem();
+					break;
+			case 3: cout << "Sorry, pokemon switching is not yet implemented." << endl << endl;
+					//turnPlayer->choosePokemon();
+					break;
+			case 4: cout << "You surrendered!" << endl << "Thanks for playing." << endl;
+					exit(0);
+					break;
+		}
+	} while(sel == 2 || sel == 3);
 }
 
 //Conducts turn; asks questions, gets input, executes choices

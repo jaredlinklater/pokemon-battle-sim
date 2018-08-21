@@ -24,6 +24,11 @@ int ai::choosePokemon() {
 	return 1;
 }
 
+//Make decisions and store them
+void ai::makeChoice() {
+	//
+}
+
 
 //Constructors
 ai::ai() {

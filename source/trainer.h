@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "trainerChoice.h"
 #include "pokemon.h"
 #include "pokemonMove.h"
 using namespace std;
@@ -12,11 +13,13 @@ public:
 	pokemon attacker;
 	string name;
 	string type; //player or ai
+	trainerChoice choice;
 
 	virtual int chooseOption() = 0; //Choose out of fight (1), items (2), pokemon (3) or run (4)
 	virtual pokemonMove chooseMove() = 0; //Choose out of first move (1), second move (2), third move (3) or fourth move(4)
 	virtual int chooseItem() = 0; //Choose item to use from list of items
 	virtual int choosePokemon() = 0; //Choose pokemon to switch to from team
+	virtual void makeChoice() = 0; //Has trainer make a their turn choices
 
 	void printOption(string num, string opt); //Prints option with appropriate spacing
 
